@@ -476,5 +476,3 @@ Regenerate all of it with `./scripts/run_demo.sh`.
 * **`proper()`** uses `initcap`, so `McDonald` → `Mcdonald`; swap in a smarter function if names matter.
 * **Single writer** per pipeline (advisory lock). Parallel batch loading would need ordering rules for same-key records across batches.
 * **Credentials** in `docker-compose.yml`/`.env.example` are demo values.
-
-Now that i have pushed, i just want to make some changes so i can compare the differences
