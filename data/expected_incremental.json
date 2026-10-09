@@ -1,0 +1,26 @@
+{
+  "records_in_file": 139,
+  "valid_unique_orders": 960,
+  "total_revenue": "728924.11",
+  "distinct_customers": 189,
+  "distinct_products": 24,
+  "orders_by_status": {
+    "cancelled": 68,
+    "delivered": 451,
+    "pending": 108,
+    "processing": 92,
+    "shipped": 241
+  },
+  "rejected_records": 6,
+  "rejected_by_reason": {
+    "invalid_item": 1,
+    "invalid_or_missing_date": 2,
+    "invalid_or_missing_email": 2,
+    "missing_order_id": 1
+  },
+  "new_orders": 60,
+  "changed_orders": 25,
+  "identical_resent_with_new_timestamp": 15,
+  "old_records_resent_skippable_by_watermark": 30,
+  "repeated_new_orders_in_file": 3
+}
