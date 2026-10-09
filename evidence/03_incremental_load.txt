@@ -1,0 +1,154 @@
+
+==================================================================
+## EVIDENCE 03 - INCREMENTAL LOAD  (data/raw_orders_incremental.xml, 139 records: new + changed + re-sent + junk)
+==================================================================
+fact_orders BEFORE: 900
+watermark before: 2024-03-25 20:56:03+00
+16:51:43 INFO    etl 1.0.0 | pipeline=orders_xml
+16:51:43 INFO    raw file archived (file_id=2)
+16:51:43 INFO    run 5 started | mode=incremental file=raw_orders_incremental.xml batch_size=50 watermark=2024-03-25 20:56:03+00:00
+16:51:43 INFO    batch 1   positions     1-62    committed | in=50   inserted=30   updated=12  rejected=2   dup=6   stale=0  
+16:51:43 INFO    batch 2   positions    63-128   committed | in=50   inserted=26   updated=9   rejected=3   dup=12  stale=0  
+16:51:43 INFO    batch 3   positions   129-139   committed | in=9    inserted=4    updated=4   rejected=1   dup=0   stale=0  
+16:51:43 INFO    run 5 SUCCESS | extracted=139 skipped_watermark=30 skipped_checkpoint=0 staged=109 | inserted=60 updated=25 rejected=6 duplicate=18 stale=0 | batches=3
+
+fact_orders AFTER: 960
+
+==================================================================
+## Only new/changed rows were written: rows touched by run 5 vs untouched
+==================================================================
+ new_rows | changed_rows | untouched_rows 
+----------+--------------+----------------
+       60 |           25 |            875
+(1 row)
+
+
+==================================================================
+## Sample of changed orders (version 2, status advanced)
+==================================================================
+  order_id  |   status   | version_no | first_run | last_run | order_total 
+------------+------------+------------+-----------+----------+-------------
+ ORD-100088 | delivered  |          2 |         1 |        5 |      228.00
+ ORD-100160 | delivered  |          2 |         1 |        5 |     3128.47
+ ORD-100252 | processing |          2 |         1 |        5 |      189.00
+ ORD-100262 | delivered  |          2 |         1 |        5 |      462.00
+ ORD-100276 | delivered  |          2 |         1 |        5 |      117.00
+ ORD-100361 | delivered  |          2 |         1 |        5 |      105.00
+(6 rows)
+
+
+==================================================================
+## Run metadata + batches
+==================================================================
+-[ RECORD 1 ]--------------+-----------------------------------------------------------------
+run_id                     | 5
+pipeline_name              | orders_xml
+run_mode                   | incremental
+source_file                | raw_orders_incremental.xml
+file_sha256                | f780978d0be25e258299c7c0bce3531c1d7e9abfd7ccc2411bf078762c98e68e
+batch_size                 | 50
+started_at                 | 2026-10-06 16:51:43.154197+00
+ended_at                   | 2026-10-06 16:51:43.358579+00
+status                     | success
+records_extracted          | 139
+records_skipped_watermark  | 30
+records_skipped_checkpoint | 0
+records_staged             | 109
+records_inserted           | 60
+records_updated            | 25
+records_loaded             | 85
+records_rejected           | 6
+records_duplicate          | 18
+records_stale              | 0
+batches_completed          | 3
+resumed_from_run_id        | 
+resumed_after_position     | 
+error_message              | 
+error_batch_no             | 
+executed_by                | etl_user
+
+ batch_no | first | last | status  | in | ins | upd | rej | dup 
+----------+-------+------+---------+----+-----+-----+-----+-----
+        1 |     1 |   62 | success | 50 |  30 |  12 |   2 |   6
+        2 |    63 |  128 | success | 50 |  26 |   9 |   3 |  12
+        3 |   129 |  139 | success |  9 |   4 |   4 |   1 |   0
+(3 rows)
+
+
+==================================================================
+## Validation + ground truth for the second export
+==================================================================
+16:51:43 INFO    etl 1.0.0 | pipeline=orders_xml
+
+ #  RESULT CHECK / DETAIL
+ 1  PASS   RECORD COUNTS: extracted = skipped + staged (every successful run)
+            violating runs: 0
+ 2  PASS   RECORD COUNTS: staged = inserted + updated + rejected + duplicate + stale
+            violating runs: 0
+ 3  PASS   RECORD COUNTS: every staged row has a cleaned row
+            staged rows never cleaned: 0
+ 4  PASS   RECORD COUNTS: no cleaned row left pending
+            pending rows: 0
+ 5  PASS   RECORD COUNTS: fact_orders = source_registry
+            fact_orders=960 registry=960
+ 6  PASS   RECORD COUNTS: loaded totals
+            orders=960 lines=2093 customers=189 products=24 rejected_rows(history)=126
+ 7  PASS   DUPLICATES: no duplicate order_id / customer email / sku
+            duplicate keys: 0
+ 8  PASS   DUPLICATES: same content never loaded twice
+            order+hash loaded more than once: 0
+ 9  PASS   DUPLICATES: dw hash = registry hash
+            mismatches: 0
+10  PASS   MISSING VALUES: required fact columns not null
+            null violations: 0
+11  PASS   MISSING VALUES: dimension keys / item values not null
+            null violations: 0
+12  PASS   MISSING VALUES: optional attributes (reported, imputed)
+            customers w/o name=1, w/o country=0, products w/o name=0, orders channel=unknown 29, status=unknown 0
+13  PASS   INTEGRITY: order_total = sum(lines), item_count = #lines
+            mismatches: 0
+14  PASS   LOADS: no run or batch stuck in running
+            stuck: 0
+15  PASS   LOADS: no unfinished checkpoint (nothing left to resume)
+            in_progress checkpoints: 0
+16  PASS   LOADS: failed runs on record (history, informational)
+            failed runs: 0
+
+Ground-truth comparison (expected_incremental.json)
+    PASS  valid unique orders: expected=960 actual=960
+    PASS  total revenue: expected=728924.11 actual=728924.11
+    PASS  distinct customers: expected=189 actual=189
+    PASS  distinct products: expected=24 actual=24
+    PASS  orders by status: expected={'cancelled': 68, 'delivered': 451, 'pending': 108, 'processing': 92, 'shipped': 241} actual={'delivered': 451, 'processing': 92, 'cancelled': 68, 'pending': 108, 'shipped': 241}
+
+OVERALL: ALL CHECKS PASSED
+
+==================================================================
+## Ground truth designed into the second file
+==================================================================
+{
+  "records_in_file": 139,
+  "valid_unique_orders": 960,
+  "total_revenue": "728924.11",
+  "distinct_customers": 189,
+  "distinct_products": 24,
+  "orders_by_status": {
+    "cancelled": 68,
+    "delivered": 451,
+    "pending": 108,
+    "processing": 92,
+    "shipped": 241
+  },
+  "rejected_records": 6,
+  "rejected_by_reason": {
+    "invalid_item": 1,
+    "invalid_or_missing_date": 2,
+    "invalid_or_missing_email": 2,
+    "missing_order_id": 1
+  },
+  "new_orders": 60,
+  "changed_orders": 25,
+  "identical_resent_with_new_timestamp": 15,
+  "old_records_resent_skippable_by_watermark": 30,
+  "repeated_new_orders_in_file": 3
+}
