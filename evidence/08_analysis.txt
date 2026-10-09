@@ -1,0 +1,70 @@
+
+==================================================================
+## EVIDENCE 08 - ANALYSIS LAYER (queries on the final PostgreSQL tables)
+==================================================================
+--- Monthly revenue (excl. cancelled) ---
+ year | month | month_name | orders |  revenue  | avg_order_value 
+------+-------+------------+--------+-----------+-----------------
+ 2024 |     1 | January    |    308 | 243711.77 |          791.27
+ 2024 |     2 | February   |    282 | 209284.86 |          742.14
+ 2024 |     3 | March      |    246 | 149486.48 |          607.67
+ 2024 |     4 | April      |     56 |  66652.13 |         1190.22
+(4 rows)
+
+--- Revenue by country ---
+ country | customers | orders |  revenue  
+---------+-----------+--------+-----------
+ US      |        74 |    335 | 230162.53
+ CA      |        23 |    110 | 115903.07
+ DE      |        26 |    126 |  94008.85
+ GB      |        22 |    113 |  75543.17
+ FR      |        14 |     67 |  60732.88
+ AU      |        17 |     84 |  52116.39
+ IN      |        13 |     57 |  40668.35
+(7 rows)
+
+--- Top 5 products by revenue ---
+  sku   |  product_name   | units_sold |  revenue  | orders 
+--------+-----------------+------------+-----------+--------
+ SV-999 | Server Rack     |        167 | 208915.33 |     69
+ DK-710 | Standing Desk   |        193 |  86657.00 |     83
+ CH-720 | Ergonomic Chair |        184 |  60536.00 |     85
+ MN-300 | 27in Monitor    |        175 |  52412.50 |     83
+ TB-930 | 10in Tablet     |        184 |  47656.00 |     87
+(5 rows)
+
+--- Channel performance ---
+ channel | orders |  revenue  | avg_order_value 
+---------+--------+-----------+-----------------
+ web     |    378 | 280290.28 |          741.51
+ mobile  |    263 | 195897.04 |          744.86
+ store   |    138 | 103646.16 |          751.06
+ phone   |     85 |  69267.40 |          814.91
+ unknown |     28 |  20034.36 |          715.51
+(5 rows)
+
+--- Customer segments ---
+ segment | customers |  revenue  | avg_orders 
+---------+-----------+-----------+------------
+ gold    |        90 | 522139.92 |        5.7
+ silver  |        65 | 127772.15 |        4.5
+ bronze  |        34 |  19223.17 |        2.5
+(3 rows)
+
+--- Order status mix ---
+   status   | orders | pct  
+------------+--------+------
+ delivered  |    451 | 47.0
+ shipped    |    241 | 25.1
+ pending    |    108 | 11.3
+ processing |     92 |  9.6
+ cancelled  |     68 |  7.1
+(5 rows)
+
+--- Weekend vs weekday ---
+ day_type | orders |  revenue  
+----------+--------+-----------
+ weekday  |    658 | 477208.64
+ weekend  |    234 | 191926.60
+(2 rows)
+
