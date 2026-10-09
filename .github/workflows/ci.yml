@@ -1,0 +1,28 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env: { POSTGRES_USER: etl_user, POSTGRES_PASSWORD: etl_pass, POSTGRES_DB: etl_test }
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U etl_user" --health-interval 3s --health-retries 20
+    env:
+      ETL_TEST_DATABASE_URL: postgresql://etl_user:etl_pass@localhost:5432/etl_test
+      PGHOST: localhost
+      PGUSER: etl_user
+      PGPASSWORD: etl_pass
+      PGDATABASE: etl_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - name: generated data is reproducible
+        run: python scripts/generate_data.py && git diff --exit-code data/
+      - run: pytest -v
+      - name: pure-SQL demo runs end to end
+        run: ./scripts/run_sql_demo.sh > /dev/null
