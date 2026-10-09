@@ -1,0 +1,90 @@
+
+==================================================================
+## EVIDENCE 04 - DEDUPLICATION
+==================================================================
+--- cleaned.orders: outcome per record, per run ---
+ run_id |        dq_status         |          dq_reason          | load_action | records 
+--------+--------------------------+-----------------------------+-------------+---------
+      1 | duplicate_already_loaded | identical_to_loaded_version | -           |      36
+      1 | duplicate_in_batch       | same_content_repeated       | -           |       8
+      1 | duplicate_in_batch       | superseded_by_newer_version | -           |       7
+      1 | rejected                 | invalid_item                | -           |       9
+      1 | rejected                 | invalid_or_missing_date     | -           |       9
+      1 | rejected                 | invalid_or_missing_email    | -           |      11
+      1 | rejected                 | missing_order_id            | -           |       6
+      1 | rejected                 | no_items                    | -           |       5
+      1 | stale_version            | older_than_loaded_version   | -           |      11
+      1 | valid                    | -                           | insert      |     900
+      1 | valid                    | -                           | update      |      25
+      2 | duplicate_already_loaded | identical_to_loaded_version | -           |     935
+      2 | duplicate_in_batch       | same_content_repeated       | -           |       8
+      2 | duplicate_in_batch       | superseded_by_newer_version | -           |       7
+      2 | rejected                 | invalid_item                | -           |       9
+      2 | rejected                 | invalid_or_missing_date     | -           |       9
+      2 | rejected                 | invalid_or_missing_email    | -           |      11
+      2 | rejected                 | missing_order_id            | -           |       6
+      2 | rejected                 | no_items                    | -           |       5
+      2 | stale_version            | older_than_loaded_version   | -           |      37
+      3 | duplicate_already_loaded | identical_to_loaded_version | -           |       1
+      4 | duplicate_already_loaded | identical_to_loaded_version | -           |     936
+      4 | duplicate_in_batch       | same_content_repeated       | -           |       7
+      4 | duplicate_in_batch       | superseded_by_newer_version | -           |       1
+      4 | rejected                 | invalid_item                | -           |       9
+      4 | rejected                 | invalid_or_missing_date     | -           |       9
+      4 | rejected                 | invalid_or_missing_email    | -           |      11
+      4 | rejected                 | missing_order_id            | -           |       6
+      4 | rejected                 | no_items                    | -           |       5
+      4 | stale_version            | older_than_loaded_version   | -           |      43
+      5 | duplicate_already_loaded | identical_to_loaded_version | -           |      17
+      5 | duplicate_in_batch       | same_content_repeated       | -           |       1
+      5 | rejected                 | invalid_item                | -           |       1
+      5 | rejected                 | invalid_or_missing_date     | -           |       2
+      5 | rejected                 | invalid_or_missing_email    | -           |       2
+      5 | rejected                 | missing_order_id            | -           |       1
+      5 | valid                    | -                           | insert      |      60
+      5 | valid                    | -                           | update      |      25
+(38 rows)
+
+--- example: one order sent several times in run 1 and what happened to each copy ---
+ run_id | batch_id | position |  order_id  |      modified_ts       |   status   |        dq_status         |          dq_reason          | load_action |   hash   
+--------+----------+----------+------------+------------------------+------------+--------------------------+-----------------------------+-------------+----------
+      1 |        2 |      143 | ORD-100139 | 2024-01-14 12:11:49+00 | processing | valid                    |                             | insert      | a7dabb15
+      1 |        7 |      611 | ORD-100139 | 2024-01-14 12:11:49+00 | processing | duplicate_already_loaded | identical_to_loaded_version |             | a7dabb15
+      1 |        8 |      745 | ORD-100139 | 2024-01-15 12:11:49+00 | shipped    | valid                    |                             | update      | 6bca57c7
+      2 |       13 |      143 | ORD-100139 | 2024-01-14 12:11:49+00 | processing | stale_version            | older_than_loaded_version   |             | a7dabb15
+      2 |       18 |      611 | ORD-100139 | 2024-01-14 12:11:49+00 | processing | stale_version            | older_than_loaded_version   |             | a7dabb15
+      2 |       19 |      745 | ORD-100139 | 2024-01-15 12:11:49+00 | shipped    | duplicate_already_loaded | identical_to_loaded_version |             | 6bca57c7
+      4 |       27 |      143 | ORD-100139 | 2024-01-14 12:11:49+00 | processing | stale_version            | older_than_loaded_version   |             | a7dabb15
+      4 |       40 |      611 | ORD-100139 | 2024-01-14 12:11:49+00 | processing | stale_version            | older_than_loaded_version   |             | a7dabb15
+      4 |       44 |      745 | ORD-100139 | 2024-01-15 12:11:49+00 | shipped    | duplicate_already_loaded | identical_to_loaded_version |             | 6bca57c7
+(9 rows)
+
+--- rejected records by reason (first run) ---
+        dq_reason         | records |                                                             sample_ids                                                             
+--------------------------+---------+------------------------------------------------------------------------------------------------------------------------------------
+ invalid_or_missing_email |      11 | ORD-900015, ORD-900007, ORD-900011, ORD-900008, ORD-900010, ORD-900014, ORD-900009, ORD-900016, ORD-900017, ORD-900013, ORD-900012
+ invalid_item             |       9 | ORD-900035, ORD-900040, ORD-900038, ORD-900033, ORD-900037, ORD-900034, ORD-900036, ORD-900039, ORD-900032
+ invalid_or_missing_date  |       9 | ORD-900023, ORD-900020, ORD-900022, ORD-900019, ORD-900018, ORD-900021, ORD-900024, ORD-900026, ORD-900025
+ missing_order_id         |       6 | 
+ no_items                 |       5 | ORD-900028, ORD-900029, ORD-900031, ORD-900030, ORD-900027
+(5 rows)
+
+
+==================================================================
+## Dedup registry: one row per source key; version_no > 1 = the record changed and was re-loaded
+==================================================================
+ version_no | keys 
+------------+------
+          1 |  910
+          2 |   50
+(2 rows)
+
+
+==================================================================
+## Same content never loaded twice (must be 0)
+==================================================================
+ order_hash_loaded_more_than_once 
+----------------------------------
+                                0
+(1 row)
+
