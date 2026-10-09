@@ -1,0 +1,16 @@
+# PostgreSQL for local development:   docker compose up -d
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: etl_user
+      POSTGRES_PASSWORD: etl_pass
+      POSTGRES_DB: etl_demo
+    ports: ["5433:5432"]      # host 5433 -> container 5432, so it can't clash with your local PostgreSQL
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U etl_user -d etl_demo"]
+      interval: 3s
+      retries: 20
+    volumes: ["pgdata:/var/lib/postgresql"]
+volumes:
+  pgdata:
