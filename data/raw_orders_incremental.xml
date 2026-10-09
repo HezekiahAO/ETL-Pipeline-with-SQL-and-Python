@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders source="legacy-shop" exported_at="2024-04-04T00:00:00Z">
+  <order id="ORD-100927" modified="2024-04-03T00:31:04Z">
+    <customer><name>  Carol   Moore </name><email>carol.moore109@example.com</email><country>usa</country></customer>
+    <order_date>2024-04-03</order_date><status>PENDING</status><channel>App</channel>
+    <items>
+      <item sku="SD-800" qty="1"><name>1TB SSD</name><price>99.00</price></item>
+      <item sku="HP-600" qty="2.0"><name>Noise Cancelling Headphones</name><price>189.00</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100463 " modified="2024-04-02T06:40:03Z">
+    <customer><name>Xavier Moore</name><email>XAVIER.MOORE136@EXAMPLE.COM</email><country>U.S.A</country></customer>
+    <order_date>02/13/2024</order_date><status> Processing</status><channel>web</channel>
+    <items>
+      <item sku="SD-800" qty="3.0"><name>1TB SSD</name><price> $99.00 </price></item>
+      <item sku="RT-900" qty=" 2 "><name>WiFi Router</name><price>$129.00</price></item>
+      <item sku="MC-960" qty=" 5 "><name>USB Microphone</name><price>79.00</price></item>
+      <item sku="LM-970" qty="3"><name>LED Desk Lamp</name><price>27.50</price></item>
+    </items>
+  </order>
+  <order id="ord-100585" modified="2024-02-25T10:09:08Z">
+    <customer><name>wendy white</name><email>wendy.white175@example.com</email><country>Great Britain</country></customer>
+    <order_date>2024-02-25T10:58:00Z</order_date><status>Delivered</status><channel>MOBILE</channel>
+    <items>
+      <item sku="SP-610" qty="2.0"><name>Bluetooth Speaker</name><price>49.95</price></item>
+      <item sku="TB-930" qty="2"><name>10in Tablet</name><price>259.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100474" modified="2024-04-01T11:15:37Z">
+    <customer><name>NOAH JACKSON</name><email> noah.jackson74@example.com </email><country>Great Britain</country></customer>
+    <order_date>2024-02-14</order_date><status>SHIPPED</status><channel>MOBILE</channel>
+    <items>
+      <item sku="HP-600" qty=" 3 "><name>Noise Cancelling Headphones</name><price>189.00</price></item>
+      <item sku="WC-500" qty=" 1 "><name>HD Webcam</name><price>$59</price></item>
+      <item sku="PH-940" qty="2"><name>Phone Case</name><price>$12.99</price></item>
+      <item sku="MS-200" qty="1"><name>Wireless Mouse</name><price>24.5</price></item>
+    </items>
+  </order>
+  <order id="ORD-100948" modified="2024-04-03T21:27:23Z">
+    <customer><name>Mia Jackson</name><email>mia.jackson62@example.com</email><country>GB</country></customer>
+    <order_date>2024-04-03</order_date><status>pending</status><channel>web</channel>
+    <items>
+      <item sku="WC-500" qty="3"><name>HD Webcam</name><price>$59.00</price></item>
+      <item sku="HP-600" qty=" 5 "><name>Noise Cancelling Headphones</name><price> $189 </price></item>
+    </items>
+  </order>
+  <order id=" ORD-100954 " modified="2024-04-03T02:52:16Z">
+    <customer><name>Sam Moore</name><email>SAM.MOORE98@EXAMPLE.COM</email><country>DE</country></customer>
+    <order_date>2024-04-03T23:53:00Z</order_date><status>delivered</status><channel>mobile</channel>
+    <items>
+      <item sku="LP-700" qty="3"><name>Laptop Stand</name><price>34.90</price></item>
+    </items>
+  </order>
+  <order id="ORD-100456" modified="2024-04-03T18:44:36Z">
+    <customer><name>Olivia Smith</name><email>olivia.smith75@example.com</email><country>CA</country></customer>
+    <order_date>2024-02-12T11:23:00Z</order_date><status>complete</status><channel>App</channel>
+    <items>
+      <item sku="WC-500" qty="3"><name>HD Webcam</name><price>59.00</price></item>
+      <item sku="MS-200" qty="2.0"><name>Wireless Mouse</name><price>24.5</price></item>
+    </items>
+  </order>
+  <order id="ORD-100897" modified="2024-04-02T03:03:42Z">
+    <customer><name>tara harris</name><email>tara.harris60@example.com</email><country/></customer>
+    <order_date>2024-03-25</order_date><status>SHIPPED</status><channel>App</channel>
+    <items>
+      <item sku="MN-300" qty="2"><name>27in Monitor</name><price>$299.50</price></item>
+      <item sku="CG-950" qty="2"><name>Phone Charger</name><price>$19.99</price></item>
+    </items>
+  </order>
+  <order id="ord-100934" modified="2024-04-02T00:39:51Z">
+    <customer><name>Ivan Smith</name><email>IVAN.SMITH147@EXAMPLE.COM</email><country>United States</country></customer>
+    <order_date>02 Apr 2024</order_date><status>SHIPPED</status><channel>web</channel>
+    <items>
+      <item sku="CB-010" qty="2"><name>USB-C Cable</name><price>7.99</price></item>
+      <item sku="DK-710" qty=" 1 "><name>Standing Desk</name><price>449.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100853" modified="2024-03-21T18:33:32Z">
+    <customer><name>FRANK TAYLOR</name><email>frank.taylor80@example.com</email><country>United Kingdom</country></customer>
+    <order_date>2024-03-21</order_date><status>SHIPPED</status><channel>In-Store</channel>
+    <items>
+      <item sku="PW-990" qty="2.0"><name>Power Bank</name><price>$35</price></item>
+      <item sku="SW-910" qty=" 2 "><name>Network Switch</name><price>59.50</price></item>
+    </items>
+  </order>
+  <order id="100925" modified="2024-04-02T18:39:28Z">
+    <customer><name>  Judy   Walker </name><email>JUDY.WALKER159@EXAMPLE.COM</email><country>usa</country></customer>
+    <order_date>2024-04-02T03:35:00Z</order_date><status>processing</status><channel>web</channel>
+    <items>
+      <item sku="MS-200" qty=" 2 "><name>Wireless Mouse</name><price>24.5</price></item>
+      <item sku="CH-720" qty="5.0"><name>Ergonomic Chair</name><price>329.00</price></item>
+      <item sku="WC-500" qty="1"><name>HD Webcam</name><price>59.00</price></item>
+    </items>
+  </order>
+  <order id="100602" modified="2024-02-26T14:31:46Z">
+    <customer><name>  Frank   Martin </name><email>FRANK.MARTIN25@EXAMPLE.COM</email><country>U.S.A</country></customer>
+    <order_date>2024-02-26</order_date><status>Completed</status><channel>In-Store</channel>
+    <items>
+      <item sku="LM-970" qty=" 5 "><name>LED Desk Lamp</name><price> $27.50 </price></item>
+    </items>
+  </order>
+  <order id=" ORD-100046 " modified="2024-04-03T11:45:33Z">
+    <customer><name>Bob Smith</name><email> bob.smith93@example.com </email><country>Germany</country></customer>
+    <order_date>2024-01-05</order_date><status>Delivered</status><channel>store</channel>
+    <items>
+      <item sku="TB-930" qty="1"><name>10in Tablet</name><price>259</price></item>
+      <item sku="LP-700" qty="5"><name>Laptop Stand</name><price>$34.9</price></item>
+      <item sku="WC-500" qty="1"><name>HD Webcam</name><price>59.00</price></item>
+    </items>
+  </order>
+  <order id="900043" modified="2024-04-02T07:37:26Z">
+    <customer><name>MIA KING</name><email>mia.king40@example.com</email><country>Australia</country></customer>
+    <order_date>31/31/2024</order_date><status>shipped</status><channel>App</channel>
+    <items>
+      <item sku="HB-400" qty="3.0"><name>USB-C Hub</name><price>$39</price></item>
+      <item sku="SD-800" qty="2"><name>1TB SSD</name><price>$99.00</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100876 " modified="2024-04-01T16:57:10Z">
+    <customer><name>Heidi Wilson</name><email>heidi.wilson171@example.com</email><country>usa</country></customer>
+    <order_date>03/23/2024</order_date><status>processing</status><channel>store</channel>
+    <items>
+      <item sku="SW-910" qty="6"><name>Network Switch</name><price>59.50</price></item>
+    </items>
+  </order>
+  <order id="ORD-100949" modified="2024-04-02T02:05:35Z">
+    <customer><name>uma walker</name><email> uma.walker26@example.com </email><country>U.S.A</country></customer>
+    <order_date>2024-04-02T21:00:00Z</order_date><status> Processing</status><channel>In-Store</channel>
+    <items>
+      <item sku="CH-720" qty=" 1 "><name>Ergonomic Chair</name><price>329.00</price></item>
+      <item sku="TB-930" qty="2"><name>10in Tablet</name><price>259.00</price></item>
+      <item sku="HP-600" qty="2.0"><name>Noise Cancelling Headphones</name><price>$189.00</price></item>
+      <item sku="SV-999" qty="2"><name>Server Rack</name><price>1250.99</price></item>
+    </items>
+  </order>
+  <order id="100901" modified="2024-04-03T20:38:22Z">
+    <customer><name>Eve Garcia</name><email>eve.garcia38@example.com</email><country>France</country></customer>
+    <order_date>03 Apr 2024</order_date><status>Delivered</status><channel>web</channel>
+    <items>
+      <item sku="WC-500" qty="1"><name>HD Webcam</name><price>59.00</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100315 " modified="2024-01-30T11:08:43Z">
+    <customer><name>  Xavier   Thompson </name><email> xavier.thompson187@example.com </email><country>Great Britain</country></customer>
+    <order_date>2024-01-30T15:10:00Z</order_date><status>Delivered</status><channel>retail</channel>
+    <items>
+      <item sku="PR-920" qty="1"><name>Laser Printer</name><price>219</price></item>
+      <item sku="SW-910" qty="5.0"><name>Network Switch</name><price> $59.50 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100665" modified="2024-04-02T09:59:04Z">
+    <customer><name>  Frank   Taylor </name><email>frank.taylor59@example.com</email><country>United Kingdom</country></customer>
+    <order_date>03/03/2024</order_date><status>delivered</status><channel>web</channel>
+    <items>
+      <item sku="LM-970" qty=" 5 "><name>LED Desk Lamp</name><price>27.50</price></item>
+      <item sku="MN-300" qty="1"><name>27in Monitor</name><price>299.50</price></item>
+    </items>
+  </order>
+  <order id="ORD-100950" modified="2024-04-02T22:10:44Z">
+    <customer><name>Frank Taylor</name><email> frank.taylor59@example.com </email><country>GB</country></customer>
+    <order_date>2024-04-02</order_date><status>SHIPPED</status><channel/>
+    <items>
+      <item sku="SP-610" qty="1.0"><name>Bluetooth Speaker</name><price>49.95</price></item>
+      <item sku="KB-100" qty=" 5 "><name>Mechanical Keyboard</name><price>$89.99</price></item>
+      <item sku="SV-999" qty=" 2 "><name>Server Rack</name><price>1250.99</price></item>
+      <item sku="WC-500" qty="3"><name>HD Webcam</name><price>59.00</price></item>
+    </items>
+  </order>
+  <order id="100930" modified="2024-04-02T08:06:52Z">
+    <customer><name>  Dan   Jackson </name><email>DAN.JACKSON53@EXAMPLE.COM</email><country>IN</country></customer>
+    <order_date>04/02/2024</order_date><status>Completed</status><channel/>
+    <items>
+      <item sku="PH-940" qty="5.0"><name>Phone Case</name><price> $12.99 </price></item>
+      <item sku="LP-700" qty="5"><name>Laptop Stand</name><price>34.90</price></item>
+      <item sku="CH-720" qty="2"><name>Ergonomic Chair</name><price> $329.00 </price></item>
+      <item sku="SP-610" qty=" 2 "><name>Bluetooth Speaker</name><price>49.95</price></item>
+    </items>
+  </order>
+  <order id="ORD-100937" modified="2024-04-03T16:24:27Z">
+    <customer><name>Victor Miller</name><email> victor.miller156@example.com </email><country>Canada</country></customer>
+    <order_date>03 Apr 2024</order_date><status>SHIPPED</status><channel>store</channel>
+    <items>
+      <item sku="SV-999" qty=" 3 "><name>Server Rack</name><price>$1250.99</price></item>
+      <item sku="MS-200" qty="2"><name>Wireless Mouse</name><price>$24.50</price></item>
+    </items>
+  </order>
+  <order id="ord-100587" modified="2024-04-02T08:21:14Z">
+    <customer><name>uma miller</name><email> uma.miller76@example.com </email><country>US</country></customer>
+    <order_date>2024-02-25</order_date><status>complete</status><channel>MOBILE</channel>
+    <items>
+      <item sku="CG-950" qty=" 6 "><name>Phone Charger</name><price>19.99</price></item>
+      <item sku="SV-999" qty=" 5 "><name>Server Rack</name><price> $1250.99 </price></item>
+    </items>
+  </order>
+  <order id=" ORD-100942 " modified="2024-04-01T17:27:04Z">
+    <customer><name>IVAN SMITH</name><email>IVAN.SMITH120@EXAMPLE.COM</email><country>U.S.A</country></customer>
+    <order_date>01 Apr 2024</order_date><status>pending</status><channel>Web</channel>
+    <items>
+      <item sku="PH-940" qty="5.0"><name>Phone Case</name><price>12.99</price></item>
+      <item sku="CG-950" qty=" 3 "><name>Phone Charger</name><price>19.99</price></item>
+      <item sku="WC-500" qty="5.0"><name>HD Webcam</name><price> $59.00 </price></item>
+      <item sku="CH-720" qty="1"><name>Ergonomic Chair</name><price>329.00</price></item>
+    </items>
+  </order>
+  <order id="100872" modified="2024-03-23T20:19:38Z">
+    <customer><name>ROSA MARTIN</name><email>rosa.martin79@example.com</email><country>usa</country></customer>
+    <order_date>23 Mar 2024</order_date><status>Delivered</status><channel>retail</channel>
+    <items>
+      <item sku="CG-950" qty=" 1 "><name>Phone Charger</name><price>19.99</price></item>
+    </items>
+  </order>
+  <order id="ORD-100815" modified="2024-04-01T04:43:08Z">
+    <customer><name>Frank Martin</name><email>frank.martin45@example.com</email><country>United States</country></customer>
+    <order_date>2024-03-17</order_date><status>Delivered</status><channel>Web</channel>
+    <items>
+      <item sku="HB-400" qty="2"><name>USB-C Hub</name><price> $39.00 </price></item>
+    </items>
+  </order>
+  <order id=" ORD-100956 " modified="2024-04-02T19:35:19Z">
+    <customer><name>TARA THOMAS</name><email>tara.thomas169@example.com</email><country>usa</country></customer>
+    <order_date>2024-04-02T03:09:00Z</order_date><status>complete</status><channel>In-Store</channel>
+    <items>
+      <item sku="CH-720" qty="1"><name>Ergonomic Chair</name><price>$329</price></item>
+      <item sku="SW-910" qty="1"><name>Network Switch</name><price>59.50</price></item>
+    </items>
+  </order>
+  <order id="100935" modified="2024-04-01T20:12:20Z">
+    <customer><name>SAM MOORE</name><email> sam.moore98@example.com </email><country/></customer>
+    <order_date>2024-04-01</order_date><status>Delivered</status><channel>mobile</channel>
+    <items>
+      <item sku="MC-960" qty="1.0"><name>USB Microphone</name><price> $79 </price></item>
+      <item sku="LP-700" qty="2"><name>Laptop Stand</name><price>34.90</price></item>
+    </items>
+  </order>
+  <order id="ORD-100959" modified="2024-04-03T14:07:09Z">
+    <customer><name>  Victor   Miller </name><email>victor.miller156@example.com</email><country>Canada</country></customer>
+    <order_date>03 Apr 2024</order_date><status>delivered</status><channel>Phone</channel>
+    <items>
+      <item sku="MN-300" qty="5"><name>27in Monitor</name><price>299.5</price></item>
+      <item sku="DK-710" qty="3"><name>Standing Desk</name><price>449.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100956" modified="2024-04-02T19:35:19Z">
+    <customer><name>Tara Thomas</name><email>tara.thomas169@example.com</email><country>U.S.A</country></customer>
+    <order_date>04/02/2024</order_date><status>delivered</status><channel>In-Store</channel>
+    <items>
+      <item sku="CH-720" qty="1"><name>Ergonomic Chair</name><price>$329.00</price></item>
+      <item sku="SW-910" qty="1.0"><name>Network Switch</name><price>59.50</price></item>
+    </items>
+  </order>
+  <order id="ORD-100419" modified="2024-02-09T15:42:30Z">
+    <customer><name>JUDY KING</name><email>judy.king116@example.com</email><country>US</country></customer>
+    <order_date>2024-02-09</order_date><status>SHIPPED</status><channel>web</channel>
+    <items>
+      <item sku="SW-910" qty=" 5 "><name>Network Switch</name><price>59.5</price></item>
+      <item sku="MN-300" qty="5.0"><name>27in Monitor</name><price> $299.5 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100923" modified="2024-04-02T23:14:44Z">
+    <customer><name>HEIDI MILLER</name><email> heidi.miller20@example.com </email><country>United States</country></customer>
+    <order_date>02 Apr 2024</order_date><status>CANCELLED</status><channel>web</channel>
+    <items>
+      <item sku="CG-950" qty="3.0"><name>Phone Charger</name><price>$19.99</price></item>
+      <item sku="WC-500" qty="3"><name>HD Webcam</name><price>59.00</price></item>
+    </items>
+  </order>
+  <order id="100410" modified="2024-02-08T20:15:27Z">
+    <customer><name>Mia Davis</name><email>mia.davis103@example.com</email><country>Canada</country></customer>
+    <order_date>08 Feb 2024</order_date><status>CANCELLED</status><channel>Web</channel>
+    <items>
+      <item sku="MC-960" qty=" 2 "><name>USB Microphone</name><price>79.00</price></item>
+    </items>
+  </order>
+  <order id="100914" modified="2024-04-02T18:57:04Z">
+    <customer><name>rosa miller</name><email> rosa.miller82@example.com </email><country/></customer>
+    <order_date>2024-04-02</order_date><status> Shipped </status><channel>retail</channel>
+    <items>
+      <item sku="HP-600" qty="2"><name>Noise Cancelling Headphones</name><price>189.00</price></item>
+      <item sku="CA-980" qty="3"><name>Cables &amp; Adapters</name><price>$15</price></item>
+    </items>
+  </order>
+  <order modified="2024-04-02T19:48:05Z">
+    <customer><name>TARA THOMAS</name><email>tara.thomas183@example.com</email><country>Australia</country></customer>
+    <order_date>02 Apr 2024</order_date><status>processing</status><channel>App</channel>
+    <items>
+      <item sku="LM-970" qty=" 1 "><name>LED Desk Lamp</name><price>$27.50</price></item>
+      <item sku="MS-200" qty=" 5 "><name>Wireless Mouse</name><price>24.50</price></item>
+    </items>
+  </order>
+  <order id="ord-100099" modified="2024-01-10T07:15:49Z">
+    <customer><name>  Kate   Martin </name><email> kate.martin165@example.com </email><country>GB</country></customer>
+    <order_date>2024-01-10T03:37:00Z</order_date><status> Processing</status><channel>web</channel>
+    <items>
+      <item sku="SD-800" qty="2.0"><name>1TB SSD</name><price>99.00</price></item>
+      <item sku="HD-810" qty="5"><name>2TB External Drive</name><price>$74.99</price></item>
+    </items>
+  </order>
+  <order id="100691" modified="2024-04-01T06:38:52Z">
+    <customer><name>YUSUF THOMAS</name><email>yusuf.thomas11@example.com</email><country>United States</country></customer>
+    <order_date>2024-03-06</order_date><status>delivered</status><channel>retail</channel>
+    <items>
+      <item sku="HP-600" qty="5"><name>Noise Cancelling Headphones</name><price> $189.00 </price></item>
+    </items>
+  </order>
+  <order id="100088" modified="2024-04-02T20:46:40Z">
+    <customer><name>  Bob   Johnson </name><email>BOB.JOHNSON4@EXAMPLE.COM</email><country>United States</country></customer>
+    <order_date>2024-01-09</order_date><status>complete</status><channel>App</channel>
+    <items>
+      <item sku="HP-600" qty="1"><name>Noise Cancelling Headphones</name><price>$189.00</price></item>
+      <item sku="HB-400" qty="1"><name>USB-C Hub</name><price>39</price></item>
+    </items>
+  </order>
+  <order id="ORD-100944" modified="2024-04-03T09:13:40Z">
+    <customer><name>WENDY HARRIS</name><email>wendy.harris152@example.com</email><country>U.S.A</country></customer>
+    <order_date>2024-04-03</order_date><status>pending</status><channel>Web</channel>
+    <items>
+      <item sku="HD-810" qty="1"><name>2TB External Drive</name><price>74.99</price></item>
+      <item sku="TB-930" qty="3"><name>10in Tablet</name><price>$259.00</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100943 " modified="2024-04-02T16:22:14Z">
+    <customer><name>BOB JOHNSON</name><email>BOB.JOHNSON4@EXAMPLE.COM</email><country>U.S.A</country></customer>
+    <order_date>2024-04-02</order_date><status>SHIPPED</status><channel>online</channel>
+    <items>
+      <item sku="MN-300" qty=" 1 "><name>27in Monitor</name><price>299.50</price></item>
+      <item sku="KB-100" qty="1"><name>Mechanical Keyboard</name><price> $89.99 </price></item>
+      <item sku="HB-400" qty="5"><name>USB-C Hub</name><price>39</price></item>
+      <item sku="SW-910" qty=" 1 "><name>Network Switch</name><price>$59.5</price></item>
+    </items>
+  </order>
+  <order id="ORD-100920" modified="2024-04-02T15:05:15Z">
+    <customer><name>Zoe Lee</name><email>ZOE.LEE112@EXAMPLE.COM</email><country>U.S.A</country></customer>
+    <order_date>2024-04-02</order_date><status>PENDING</status><channel>App</channel>
+    <items>
+      <item sku="SV-999" qty="5"><name>Server Rack</name><price>$1250.99</price></item>
+      <item sku="CA-980" qty="2.0"><name>Cables &amp; Adapters</name><price> $15.00 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100913" modified="2024-04-02T00:26:09Z">
+    <customer><name>Uma Young</name><email>uma.young174@example.com</email><country>usa</country></customer>
+    <order_date>02 Apr 2024</order_date><status>shipped</status><channel>online</channel>
+    <items>
+      <item sku="CB-010" qty="2"><name>USB-C Cable</name><price> $7.99 </price></item>
+      <item sku="CA-980" qty="1"><name>Cables &amp; Adapters</name><price>15.00</price></item>
+      <item sku="SW-910" qty="5"><name>Network Switch</name><price>59.5</price></item>
+    </items>
+  </order>
+  <order id="ORD-100521" modified="2024-04-01T23:00:58Z">
+    <customer><name>  Wendy   White </name><email>wendy.white175@example.com</email><country>UK</country></customer>
+    <order_date>2024-02-19</order_date><status>delivered</status><channel>web</channel>
+    <items>
+      <item sku="LP-700" qty=" 2 "><name>Laptop Stand</name><price>34.90</price></item>
+      <item sku="CA-980" qty="2"><name>Cables &amp; Adapters</name><price>$15.00</price></item>
+    </items>
+  </order>
+  <order id="ord-100915" modified="2024-04-01T00:51:11Z">
+    <customer><name>Ivan Moore</name><email>IVAN.MOORE1@EXAMPLE.COM</email><country>usa</country></customer>
+    <order_date>01 Apr 2024</order_date><status>complete</status><channel>retail</channel>
+    <items>
+      <item sku="LM-970" qty=" 1 "><name>LED Desk Lamp</name><price> $27.50 </price></item>
+    </items>
+  </order>
+  <order id="ord-100663" modified="2024-04-02T15:53:37Z">
+    <customer><name>Heidi Young</name><email> heidi.young55@example.com </email><country>AU</country></customer>
+    <order_date>03 Mar 2024</order_date><status>Delivered</status><channel>phone</channel>
+    <items>
+      <item sku="RT-900" qty="2"><name>WiFi Router</name><price>$129.00</price></item>
+      <item sku="HD-810" qty="1.0"><name>2TB External Drive</name><price>74.99</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100918 " modified="2024-04-01T13:53:00Z">
+    <customer><name>TARA HARRIS</name><email>TARA.HARRIS60@EXAMPLE.COM</email><country>Australia</country></customer>
+    <order_date>04/01/2024</order_date><status>shipped</status><channel>mobile</channel>
+    <items>
+      <item sku="CG-950" qty="2"><name>Phone Charger</name><price>19.99</price></item>
+      <item sku="CA-980" qty="3"><name>Cables &amp; Adapters</name><price>15</price></item>
+      <item sku="MN-300" qty="2"><name>27in Monitor</name><price>299.50</price></item>
+    </items>
+  </order>
+  <order id="100924" modified="2024-04-03T03:05:34Z">
+    <customer><name>DAN WALKER</name><email> dan.walker115@example.com </email><country>United States</country></customer>
+    <order_date>04/03/2024</order_date><status> Shipped </status><channel>Web</channel>
+    <items>
+      <item sku="HB-400" qty="1.0"><name>USB-C Hub</name><price> $39.00 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100929" modified="2024-04-01T19:44:47Z">
+    <customer><name>Yusuf Garcia</name><email>yusuf.garcia47@example.com</email><country>UK</country></customer>
+    <order_date>01 Apr 2024</order_date><status>SHIPPED</status><channel>store</channel>
+    <items>
+      <item sku="PH-940" qty="5"><name>Phone Case</name><price> $12.99 </price></item>
+      <item sku="MN-300" qty="2"><name>27in Monitor</name><price>$299.50</price></item>
+    </items>
+  </order>
+  <order id="ORD-100928" modified="2024-04-01T15:43:10Z">
+    <customer><name>zoe walker</name><email>zoe.walker153@example.com</email><country>CA</country></customer>
+    <order_date>2024-04-01</order_date><status>Delivered</status><channel>store</channel>
+    <items>
+      <item sku="SV-999" qty="5.0"><name>Server Rack</name><price>$1250.99</price></item>
+      <item sku="DK-710" qty="5"><name>Standing Desk</name><price>$449.00</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100422 " modified="2024-04-03T07:42:35Z">
+    <customer><name>Alice Garcia</name><email> alice.garcia9@example.com </email><country>Canada</country></customer>
+    <order_date>2024-02-09</order_date><status>Delivered</status><channel>In-Store</channel>
+    <items>
+      <item sku="DK-710" qty=" 1 "><name>Standing Desk</name><price>$449.00</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100904 " modified="2024-04-01T00:55:42Z">
+    <customer><name>kate wilson</name><email>kate.wilson117@example.com</email><country>Canada</country></customer>
+    <order_date>04/01/2024</order_date><status>shipped</status><channel>Phone</channel>
+    <items>
+      <item sku="SD-800" qty="3.0"><name>1TB SSD</name><price>99.00</price></item>
+      <item sku="TB-930" qty="2.0"><name>10in Tablet</name><price>$259</price></item>
+    </items>
+  </order>
+  <order id="ord-100947" modified="2024-04-01T09:05:04Z">
+    <customer><name>carol martin</name><email>carol.martin81@example.com</email><country>France</country></customer>
+    <order_date>04/01/2024</order_date><status>Canceled</status><channel>online</channel>
+    <items>
+      <item sku="HP-600" qty="1"><name>Noise Cancelling Headphones</name><price>$189</price></item>
+      <item sku="LM-970" qty="2.0"><name>LED Desk Lamp</name><price>$27.50</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100155 " modified="2024-01-15T16:59:39Z">
+    <customer><name>rosa harris</name><email> rosa.harris123@example.com </email><country>DE</country></customer>
+    <order_date>2024-01-15T00:29:00Z</order_date><status>delivered</status><channel/>
+    <items>
+      <item sku="PR-920" qty="5"><name>Laser Printer</name><price>219</price></item>
+      <item sku="KB-100" qty=" 3 "><name>Mechanical Keyboard</name><price>$89.99</price></item>
+      <item sku="PH-940" qty="3"><name>Phone Case</name><price>12.99</price></item>
+      <item sku="RT-900" qty="2"><name>WiFi Router</name><price> $129 </price></item>
+    </items>
+  </order>
+  <order id="100946" modified="2024-04-02T16:45:21Z">
+    <customer><name>NOAH YOUNG</name><email> noah.young35@example.com </email><country>United States</country></customer>
+    <order_date>2024-04-02</order_date><status>cancelled</status><channel>In-Store</channel>
+    <items>
+      <item sku="SD-800" qty="5"><name>1TB SSD</name><price> $99 </price></item>
+      <item sku="HP-600" qty=" 1 "><name>Noise Cancelling Headphones</name><price>189.00</price></item>
+      <item sku="SW-910" qty="2.0"><name>Network Switch</name><price>$59.50</price></item>
+    </items>
+  </order>
+  <order id="100910" modified="2024-04-03T19:21:04Z">
+    <customer><name>Wendy Anderson</name><email> wendy.anderson111@example.com </email><country>DE</country></customer>
+    <order_date>2024-04-03</order_date><status>Delivered</status><channel>Web</channel>
+    <items>
+      <item sku="PR-920" qty="5"><name>Laser Printer</name><price>219.00</price></item>
+      <item sku="MS-200" qty="1.0"><name>Wireless Mouse</name><price>24.50</price></item>
+      <item sku="DK-710" qty="3.0"><name>Standing Desk</name><price>449.00</price></item>
+      <item sku="CH-720" qty="3"><name>Ergonomic Chair</name><price>329.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100109" modified="2024-01-11T18:36:26Z">
+    <customer><name>NOAH THOMAS</name><email>noah.thomas158@example.com</email><country>GB</country></customer>
+    <order_date>1704974400</order_date><status>complete</status><channel>Phone</channel>
+    <items>
+      <item sku="KB-100" qty="1"><name>Mechanical Keyboard</name><price> $89.99 </price></item>
+      <item sku="PR-920" qty="2.0"><name>Laser Printer</name><price>$219.00</price></item>
+      <item sku="LM-970" qty=" 1 "><name>LED Desk Lamp</name><price>27.50</price></item>
+      <item sku="PH-940" qty="3"><name>Phone Case</name><price> $12.99 </price></item>
+    </items>
+  </order>
+  <order id="100234" modified="2024-01-23T17:04:15Z">
+    <customer><name>ZOE MARTIN</name><email> zoe.martin88@example.com </email><country>US</country></customer>
+    <order_date>2024-01-23T23:51:00Z</order_date><status>pending</status><channel>web</channel>
+    <items>
+      <item sku="WC-500" qty=" 2 "><name>HD Webcam</name><price>$59.00</price></item>
+      <item sku="LM-970" qty="1"><name>LED Desk Lamp</name><price> $27.5 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100545" modified="2024-04-02T07:28:47Z">
+    <customer><name>  Grace   Miller </name><email>GRACE.MILLER73@EXAMPLE.COM</email><country>U.S.A</country></customer>
+    <order_date>02/21/2024</order_date><status>SHIPPED</status><channel>online</channel>
+    <items>
+      <item sku="MS-200" qty=" 5 "><name>Wireless Mouse</name><price>$24.5</price></item>
+      <item sku="DK-710" qty="2.0"><name>Standing Desk</name><price> $449 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100052" modified="2024-01-05T10:12:07Z">
+    <customer><name>Judy King</name><email>judy.king116@example.com</email><country>United States</country></customer>
+    <order_date>2024-01-05</order_date><status>complete</status><channel>MOBILE</channel>
+    <items>
+      <item sku="CA-980" qty=" 1 "><name>Cables &amp; Adapters</name><price>15.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100742" modified="2024-04-02T08:39:34Z">
+    <customer><name>  Tara   Brown </name><email>tara.brown173@example.com</email><country>Great Britain</country></customer>
+    <order_date>2024-03-10T20:21:00Z</order_date><status>complete</status><channel>Web</channel>
+    <items>
+      <item sku="PW-990" qty=" 1 "><name>Power Bank</name><price> $35.00 </price></item>
+      <item sku="HB-400" qty="3.0"><name>USB-C Hub</name><price>39.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100916" modified="2024-04-01T07:41:49Z">
+    <customer><name>MIA MILLER</name><email>mia.miller12@example.com</email><country>usa</country></customer>
+    <order_date>2024-04-01</order_date><status>pending</status><channel>store</channel>
+    <items>
+      <item sku="KB-100" qty="1"><name>Mechanical Keyboard</name><price>89.99</price></item>
+      <item sku="MC-960" qty=" 1 "><name>USB Microphone</name><price>79</price></item>
+    </items>
+  </order>
+  <order id="100160" modified="2024-04-02T16:32:21Z">
+    <customer><name>HEIDI DAVIS</name><email>HEIDI.DAVIS36@EXAMPLE.COM</email><country>Great Britain</country></customer>
+    <order_date>01/16/2024</order_date><status>Completed</status><channel>MOBILE</channel>
+    <items>
+      <item sku="HD-810" qty=" 3 "><name>2TB External Drive</name><price> $74.99 </price></item>
+      <item sku="MN-300" qty="5.0"><name>27in Monitor</name><price>299.50</price></item>
+      <item sku="DK-710" qty=" 3 "><name>Standing Desk</name><price>$449.00</price></item>
+      <item sku="WC-500" qty="1.0"><name>HD Webcam</name><price> $59.00 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100912" modified="2024-04-03T09:40:16Z">
+    <customer><name>Quinn King</name><email>quinn.king49@example.com</email><country>usa</country></customer>
+    <order_date>04/03/2024</order_date><status>PENDING</status><channel>Web</channel>
+    <items>
+      <item sku="TB-930" qty="1"><name>10in Tablet</name><price>259.00</price></item>
+    </items>
+  </order>
+  <order id="100936" modified="2024-04-01T20:52:34Z">
+    <customer><name>  Quinn   King </name><email> quinn.king49@example.com </email><country>USA</country></customer>
+    <order_date>04/01/2024</order_date><status>PENDING</status><channel>In-Store</channel>
+    <items>
+      <item sku="CA-980" qty="1"><name>Cables &amp; Adapters</name><price>$15</price></item>
+      <item sku="KB-100" qty="1"><name>Mechanical Keyboard</name><price>$89.99</price></item>
+      <item sku="MC-960" qty="1"><name>USB Microphone</name><price>79.00</price></item>
+    </items>
+  </order>
+  <order id="ord-100907" modified="2024-04-02T04:35:27Z">
+    <customer><name>Bob Moore</name><email>BOB.MOORE172@EXAMPLE.COM</email><country>Australia</country></customer>
+    <order_date>2024-04-02</order_date><status>Completed</status><channel>mobile</channel>
+    <items>
+      <item sku="WC-500" qty="2"><name>HD Webcam</name><price>$59.00</price></item>
+      <item sku="CA-980" qty="3"><name>Cables &amp; Adapters</name><price>$15</price></item>
+    </items>
+  </order>
+  <order id="ORD-900041" modified="2024-04-02T01:46:06Z">
+    <customer><name>Mia Walker</name><email>john at example dot com</email><country/></customer>
+    <order_date>2024-04-02T23:22:00Z</order_date><status>processing</status><channel>phone</channel>
+    <items>
+      <item sku="PR-920" qty=" 1 "><name>Laser Printer</name><price>$219.00</price></item>
+      <item sku="MC-960" qty="2"><name>USB Microphone</name><price>$79.00</price></item>
+    </items>
+  </order>
+  <order id="100940" modified="2024-04-02T18:03:05Z">
+    <customer><name>HEIDI JOHNSON</name><email> heidi.johnson66@example.com </email><country>U.S.A</country></customer>
+    <order_date>02 Apr 2024</order_date><status> Processing</status><channel>web</channel>
+    <items>
+      <item sku="SW-910" qty="2.0"><name>Network Switch</name><price> $59.5 </price></item>
+      <item sku="MN-300" qty="1"><name>27in Monitor</name><price> $299.50 </price></item>
+      <item sku="KB-100" qty=" 1 "><name>Mechanical Keyboard</name><price>$89.99</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100428 " modified="2024-04-03T01:24:29Z">
+    <customer><name>BOB MOORE</name><email>BOB.MOORE172@EXAMPLE.COM</email><country>AU</country></customer>
+    <order_date>2024-02-10T15:34:00Z</order_date><status>complete</status><channel>App</channel>
+    <items>
+      <item sku="PR-920" qty="1"><name>Laser Printer</name><price>219.00</price></item>
+      <item sku="MS-200" qty="2"><name>Wireless Mouse</name><price>$24.50</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100532 " modified="2024-02-20T09:54:04Z">
+    <customer><name>YUSUF DAVIS</name><email>yusuf.davis121@example.com</email><country>Deutschland</country></customer>
+    <order_date>1708430400</order_date><status>shipped</status><channel>web</channel>
+    <items>
+      <item sku="SD-800" qty="1.0"><name>1TB SSD</name><price>99</price></item>
+      <item sku="WC-500" qty=" 2 "><name>HD Webcam</name><price>59.00</price></item>
+      <item sku="KB-100" qty="2"><name>Mechanical Keyboard</name><price>$89.99</price></item>
+      <item sku="CA-980" qty="3"><name>Cables &amp; Adapters</name><price>15</price></item>
+    </items>
+  </order>
+  <order id="ORD-100361" modified="2024-04-02T21:03:26Z">
+    <customer><name>Rosa Anderson</name><email>rosa.anderson113@example.com</email><country>AU</country></customer>
+    <order_date>04 Feb 2024</order_date><status>delivered</status><channel>MOBILE</channel>
+    <items>
+      <item sku="PW-990" qty="3"><name>Power Bank</name><price>35.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100386" modified="2024-04-03T18:18:19Z">
+    <customer><name>  Rosa   Taylor </name><email>rosa.taylor34@example.com</email><country>CA</country></customer>
+    <order_date>2024-02-06</order_date><status>SHIPPED</status><channel>web</channel>
+    <items>
+      <item sku="KB-100" qty="6.0"><name>Mechanical Keyboard</name><price>89.99</price></item>
+      <item sku="DK-710" qty="1.0"><name>Standing Desk</name><price> $449.00 </price></item>
+    </items>
+  </order>
+  <order id="100915" modified="2024-04-01T00:51:11Z">
+    <customer><name>  Ivan   Moore </name><email>ivan.moore1@example.com</email><country>USA</country></customer>
+    <order_date>2024-04-01T10:18:00Z</order_date><status>Delivered</status><channel>store</channel>
+    <items>
+      <item sku="LM-970" qty="1.0"><name>LED Desk Lamp</name><price> $27.50 </price></item>
+    </items>
+  </order>
+  <order id=" ORD-100252 " modified="2024-04-03T11:23:22Z">
+    <customer><name>  Kate   Miller </name><email>kate.miller44@example.com</email><country>United States</country></customer>
+    <order_date>24 Jan 2024</order_date><status> Processing</status><channel>online</channel>
+    <items>
+      <item sku="HP-600" qty="1.0"><name>Noise Cancelling Headphones</name><price>$189.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-900042" modified="2024-04-02T16:10:37Z">
+    <customer><name>UMA WALKER</name><email>john at example dot com</email><country>United States</country></customer>
+    <order_date>1712059200</order_date><status> Processing</status><channel>Phone</channel>
+    <items>
+      <item sku="PH-940" qty="5"><name>Phone Case</name><price>$12.99</price></item>
+      <item sku="LM-970" qty="2"><name>LED Desk Lamp</name><price> $27.5 </price></item>
+    </items>
+  </order>
+  <order id="100939" modified="2024-04-02T04:35:32Z">
+    <customer><name>judy king</name><email> judy.king116@example.com </email><country>U.S.A</country></customer>
+    <order_date>2024-04-02T19:37:00Z</order_date><status>processing</status><channel>App</channel>
+    <items>
+      <item sku="LP-700" qty="2"><name>Laptop Stand</name><price>34.90</price></item>
+    </items>
+  </order>
+  <order id="100909" modified="2024-04-02T13:46:46Z">
+    <customer><name>  Alice   Miller </name><email> alice.miller42@example.com </email><country>CA</country></customer>
+    <order_date>2024-04-02</order_date><status>Completed</status><channel>online</channel>
+    <items>
+      <item sku="LP-700" qty="5"><name>Laptop Stand</name><price> $34.9 </price></item>
+      <item sku="CB-010" qty="3"><name>USB-C Cable</name><price>7.99</price></item>
+    </items>
+  </order>
+  <order id="100952" modified="2024-04-02T09:06:13Z">
+    <customer><name/><email>WENDY.BROWN23@EXAMPLE.COM</email><country>Deutschland</country></customer>
+    <order_date>2024-04-02T02:22:00Z</order_date><status>complete</status><channel>MOBILE</channel>
+    <items>
+      <item sku="SD-800" qty="1"><name>1TB SSD</name><price> $99.00 </price></item>
+    </items>
+  </order>
+  <order id="ord-100957" modified="2024-04-01T13:06:58Z">
+    <customer><name>Alice Miller</name><email>alice.miller177@example.com</email><country>France</country></customer>
+    <order_date>01 Apr 2024</order_date><status>Delivered</status><channel>Web</channel>
+    <items>
+      <item sku="HD-810" qty="2"><name>2TB External Drive</name><price>74.99</price></item>
+      <item sku="LM-970" qty=" 3 "><name>LED Desk Lamp</name><price> $27.50 </price></item>
+      <item sku="PW-990" qty="1"><name>Power Bank</name><price> $35.00 </price></item>
+      <item sku="MC-960" qty=" 1 "><name>USB Microphone</name><price>79.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100561" modified="2024-04-02T05:42:26Z">
+    <customer><name>frank martin</name><email> frank.martin25@example.com </email><country>US</country></customer>
+    <order_date>22 Feb 2024</order_date><status>Delivered</status><channel>online</channel>
+    <items>
+      <item sku="PW-990" qty=" 1 "><name>Power Bank</name><price>35.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100273" modified="2024-04-03T17:36:51Z">
+    <customer><name>liam garcia</name><email>LIAM.GARCIA50@EXAMPLE.COM</email><country>Great Britain</country></customer>
+    <order_date>26 Jan 2024</order_date><status> Processing</status><channel>Web</channel>
+    <items>
+      <item sku="HP-600" qty="1.0"><name>Noise Cancelling Headphones</name><price>$189.00</price></item>
+      <item sku="LP-700" qty=" 3 "><name>Laptop Stand</name><price>34.90</price></item>
+      <item sku="TB-930" qty="2"><name>10in Tablet</name><price>$259.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100908" modified="2024-04-02T11:20:48Z">
+    <customer><name>wendy white</name><email> wendy.white175@example.com </email><country>Great Britain</country></customer>
+    <order_date>2024-04-02T07:28:00Z</order_date><status>shipped</status><channel>web</channel>
+    <items>
+      <item sku="PW-990" qty="5"><name>Power Bank</name><price> $35.00 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100905" modified="2024-04-02T01:23:46Z">
+    <customer><name>OLIVIA YOUNG</name><email>olivia.young8@example.com</email><country>USA</country></customer>
+    <order_date>04/02/2024</order_date><status>Completed</status><channel>web</channel>
+    <items>
+      <item sku="WC-500" qty="1.0"><name>HD Webcam</name><price>$59</price></item>
+      <item sku="PH-940" qty="5"><name>Phone Case</name><price>12.99</price></item>
+      <item sku="LP-700" qty="2"><name>Laptop Stand</name><price>$34.90</price></item>
+    </items>
+  </order>
+  <order id="ORD-100047" modified="2024-01-05T13:04:09Z">
+    <customer><name/><email>yusuf.walker57@example.com</email><country>Canada</country></customer>
+    <order_date>01/05/2024</order_date><status>Delivered</status><channel>In-Store</channel>
+    <items>
+      <item sku="SV-999" qty="3"><name>Server Rack</name><price>1250.99</price></item>
+      <item sku="CA-980" qty="3"><name>Cables &amp; Adapters</name><price>15</price></item>
+      <item sku="HD-810" qty="3"><name>2TB External Drive</name><price>74.99</price></item>
+      <item sku="PH-940" qty="1.0"><name>Phone Case</name><price>12.99</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100299 " modified="2024-01-29T17:32:07Z">
+    <customer><name>carol king</name><email>carol.king96@example.com</email><country>USA</country></customer>
+    <order_date>01/29/2024</order_date><status>delivered</status><channel/>
+    <items>
+      <item sku="RT-900" qty=" 2 "><name>WiFi Router</name><price>129.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100559" modified="2024-04-03T15:41:40Z">
+    <customer><name>Victor Young</name><email>victor.young100@example.com</email><country>DE</country></customer>
+    <order_date>22 Feb 2024</order_date><status> Shipped </status><channel>In-Store</channel>
+    <items>
+      <item sku="DK-710" qty="2"><name>Standing Desk</name><price>449.00</price></item>
+      <item sku="MN-300" qty=" 3 "><name>27in Monitor</name><price>299.50</price></item>
+    </items>
+  </order>
+  <order id="100413" modified="2024-04-03T07:55:01Z">
+    <customer><name>victor miller</name><email> victor.miller156@example.com </email><country>CA</country></customer>
+    <order_date>2024-02-08</order_date><status>delivered</status><channel>web</channel>
+    <items>
+      <item sku="PW-990" qty=" 1 "><name>Power Bank</name><price>$35</price></item>
+    </items>
+  </order>
+  <order id="ORD-100919" modified="2024-04-02T03:27:15Z">
+    <customer><name>bob thomas</name><email>bob.thomas68@example.com</email><country>United States</country></customer>
+    <order_date>04/02/2024</order_date><status>SHIPPED</status><channel>In-Store</channel>
+    <items>
+      <item sku="SD-800" qty=" 2 "><name>1TB SSD</name><price>99.00</price></item>
+      <item sku="KB-100" qty=" 1 "><name>Mechanical Keyboard</name><price> $89.99 </price></item>
+      <item sku="LM-970" qty="1"><name>LED Desk Lamp</name><price> $27.50 </price></item>
+    </items>
+  </order>
+  <order id=" ORD-100926 " modified="2024-04-01T05:38:29Z">
+    <customer><name>Bob Smith</name><email>bob.smith93@example.com</email><country>Deutschland</country></customer>
+    <order_date>2024-04-01</order_date><status>CANCELLED</status><channel>retail</channel>
+    <items>
+      <item sku="SW-910" qty="1"><name>Network Switch</name><price>59.50</price></item>
+      <item sku="WC-500" qty="2"><name>HD Webcam</name><price>59</price></item>
+    </items>
+  </order>
+  <order id="ORD-100906" modified="2024-04-03T11:07:22Z">
+    <customer><name>Alice Garcia</name><email> alice.garcia9@example.com </email><country>CA</country></customer>
+    <order_date>2024-04-03T21:43:00Z</order_date><status>Completed</status><channel>online</channel>
+    <items>
+      <item sku="HB-400" qty="1.0"><name>USB-C Hub</name><price>39</price></item>
+      <item sku="PW-990" qty="1"><name>Power Bank</name><price>$35</price></item>
+      <item sku="LM-970" qty="1"><name>LED Desk Lamp</name><price>27.5</price></item>
+      <item sku="KB-100" qty=" 1 "><name>Mechanical Keyboard</name><price> $89.99 </price></item>
+    </items>
+  </order>
+  <order id="ord-100902" modified="2024-04-02T20:45:27Z">
+    <customer><name>Noah Young</name><email> noah.young35@example.com </email><country>United States</country></customer>
+    <order_date>02 Apr 2024</order_date><status>SHIPPED</status><channel>Web</channel>
+    <items>
+      <item sku="PW-990" qty="1.0"><name>Power Bank</name><price> $35.00 </price></item>
+      <item sku="CG-950" qty="3.0"><name>Phone Charger</name><price> $19.99 </price></item>
+    </items>
+  </order>
+  <order id=" ORD-100317 " modified="2024-01-30T15:25:49Z">
+    <customer><name>Sam Wilson</name><email>SAM.WILSON151@EXAMPLE.COM</email><country>usa</country></customer>
+    <order_date>30 Jan 2024</order_date><status>SHIPPED</status><channel>MOBILE</channel>
+    <items>
+      <item sku="MS-200" qty=" 1 "><name>Wireless Mouse</name><price>24.50</price></item>
+    </items>
+  </order>
+  <order id="ORD-100951" modified="2024-04-02T14:46:47Z">
+    <customer><name>Liam Smith</name><email>liam.smith128@example.com</email><country/></customer>
+    <order_date>02 Apr 2024</order_date><status> Shipped </status><channel>In-Store</channel>
+    <items>
+      <item sku="WC-500" qty="1"><name>HD Webcam</name><price>59.00</price></item>
+      <item sku="LP-700" qty=" 1 "><name>Laptop Stand</name><price> $34.90 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100931" modified="2024-04-02T20:48:59Z">
+    <customer><name>Wendy Brown</name><email> wendy.brown23@example.com </email><country>Germany</country></customer>
+    <order_date>04/02/2024</order_date><status>Delivered</status><channel>retail</channel>
+    <items>
+      <item sku="HD-810" qty="2.0"><name>2TB External Drive</name><price>74.99</price></item>
+      <item sku="TB-930" qty="2.0"><name>10in Tablet</name><price>259</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100162 " modified="2024-04-01T08:12:03Z">
+    <customer><name>heidi taylor</name><email> heidi.taylor69@example.com </email><country>DE</country></customer>
+    <order_date>16 Jan 2024</order_date><status>Completed</status><channel>Phone</channel>
+    <items>
+      <item sku="PR-920" qty="1"><name>Laser Printer</name><price>219.00</price></item>
+      <item sku="SP-610" qty="5.0"><name>Bluetooth Speaker</name><price> $49.95 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100958" modified="2024-04-03T06:40:17Z">
+    <customer><name>Noah Davis</name><email>noah.davis127@example.com</email><country>USA</country></customer>
+    <order_date>2024-04-03T14:03:00Z</order_date><status>Delivered</status><channel>web</channel>
+    <items>
+      <item sku="PW-990" qty="3"><name>Power Bank</name><price> $35.00 </price></item>
+      <item sku="MN-300" qty="1.0"><name>27in Monitor</name><price> $299.50 </price></item>
+      <item sku="SV-999" qty="2"><name>Server Rack</name><price>1250.99</price></item>
+    </items>
+  </order>
+  <order id="100938" modified="2024-04-01T17:40:57Z">
+    <customer><name>zoe garcia</name><email>ZOE.GARCIA133@EXAMPLE.COM</email><country>IN</country></customer>
+    <order_date>2024-04-01</order_date><status>PENDING</status><channel>Phone</channel>
+    <items>
+      <item sku="SD-800" qty="2.0"><name>1TB SSD</name><price> $99 </price></item>
+      <item sku="MC-960" qty="5"><name>USB Microphone</name><price>79.00</price></item>
+      <item sku="LP-700" qty="2"><name>Laptop Stand</name><price>$34.9</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100830 " modified="2024-04-02T02:44:17Z">
+    <customer><name>Heidi Miller</name><email>heidi.miller20@example.com</email><country>US</country></customer>
+    <order_date>2024-03-19</order_date><status>Canceled</status><channel>phone</channel>
+    <items>
+      <item sku="HD-810" qty="3.0"><name>2TB External Drive</name><price> $74.99 </price></item>
+      <item sku="KB-100" qty="1.0"><name>Mechanical Keyboard</name><price>89.99</price></item>
+      <item sku="SV-999" qty=" 1 "><name>Server Rack</name><price>1250.99</price></item>
+    </items>
+  </order>
+  <order id="100238" modified="2024-01-23T20:05:21Z">
+    <customer><name>WENDY HARRIS</name><email>wendy.harris152@example.com</email><country>usa</country></customer>
+    <order_date>23 Jan 2024</order_date><status>complete</status><channel>MOBILE</channel>
+    <items>
+      <item sku="PR-920" qty="1"><name>Laser Printer</name><price>219.00</price></item>
+      <item sku="PW-990" qty=" 1 "><name>Power Bank</name><price>35.00</price></item>
+      <item sku="KB-100" qty="1"><name>Mechanical Keyboard</name><price> $89.99 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100704" modified="2024-03-07T17:23:24Z">
+    <customer><name>WENDY DAVIS</name><email>wendy.davis125@example.com</email><country>United Kingdom</country></customer>
+    <order_date>2024-03-07T21:36:00Z</order_date><status>complete</status><channel>store</channel>
+    <items>
+      <item sku="LM-970" qty=" 1 "><name>LED Desk Lamp</name><price>27.5</price></item>
+      <item sku="CG-950" qty="1"><name>Phone Charger</name><price>19.99</price></item>
+    </items>
+  </order>
+  <order id="ORD-100563" modified="2024-02-23T19:41:48Z">
+    <customer><name>  Eve   Moore </name><email>eve.moore33@example.com</email><country>Canada</country></customer>
+    <order_date>2024-02-23</order_date><status>SHIPPED</status><channel>retail</channel>
+    <items>
+      <item sku="CA-980" qty=" 1 "><name>Cables &amp; Adapters</name><price>15.00</price></item>
+      <item sku="RT-900" qty="5"><name>WiFi Router</name><price> $129.00 </price></item>
+      <item sku="CH-720" qty="1"><name>Ergonomic Chair</name><price> $329.00 </price></item>
+    </items>
+  </order>
+  <order id="100922" modified="2024-04-01T14:26:49Z">
+    <customer><name>frank walker</name><email>FRANK.WALKER24@EXAMPLE.COM</email><country>Canada</country></customer>
+    <order_date>2024-04-01T08:24:00Z</order_date><status>Completed</status><channel>online</channel>
+    <items>
+      <item sku="DK-710" qty=" 2 "><name>Standing Desk</name><price>449.00</price></item>
+      <item sku="WC-500" qty=" 3 "><name>HD Webcam</name><price>59.00</price></item>
+      <item sku="LM-970" qty="2"><name>LED Desk Lamp</name><price>27.5</price></item>
+      <item sku="CA-980" qty=" 1 "><name>Cables &amp; Adapters</name><price>15.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100414" modified="2024-02-09T08:49:37Z">
+    <customer><name>HEIDI GARCIA</name><email> heidi.garcia178@example.com </email><country>FR</country></customer>
+    <order_date>2024-02-09</order_date><status>complete</status><channel>online</channel>
+    <items>
+      <item sku="HB-400" qty="2.0"><name>USB-C Hub</name><price>39</price></item>
+      <item sku="HD-810" qty="1"><name>2TB External Drive</name><price>$74.99</price></item>
+      <item sku="RT-900" qty=" 1 "><name>WiFi Router</name><price>$129.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100947" modified="2024-04-01T09:05:04Z">
+    <customer><name>Carol Martin</name><email>carol.martin81@example.com</email><country>France</country></customer>
+    <order_date>2024-04-01</order_date><status>CANCELLED</status><channel>online</channel>
+    <items>
+      <item sku="HP-600" qty="1.0"><name>Noise Cancelling Headphones</name><price>189.00</price></item>
+      <item sku="LM-970" qty=" 2 "><name>LED Desk Lamp</name><price>$27.5</price></item>
+    </items>
+  </order>
+  <order id="100781" modified="2024-04-03T16:52:22Z">
+    <customer><name>Heidi Lee</name><email> heidi.lee5@example.com </email><country>Deutschland</country></customer>
+    <order_date>03/14/2024</order_date><status>complete</status><channel>online</channel>
+    <items>
+      <item sku="WC-500" qty="3"><name>HD Webcam</name><price>59</price></item>
+      <item sku="HD-810" qty="2.0"><name>2TB External Drive</name><price>74.99</price></item>
+    </items>
+  </order>
+  <order id="100616" modified="2024-02-28T08:09:32Z">
+    <customer><name>UMA MARTIN</name><email> uma.martin32@example.com </email><country>U.S.A</country></customer>
+    <order_date>2024-02-28</order_date><status>Completed</status><channel>App</channel>
+    <items>
+      <item sku="PW-990" qty="2.0"><name>Power Bank</name><price>35.00</price></item>
+      <item sku="SW-910" qty=" 1 "><name>Network Switch</name><price>59.5</price></item>
+    </items>
+  </order>
+  <order id="ORD-100945" modified="2024-04-02T11:29:29Z">
+    <customer><name>carol moore</name><email> carol.moore109@example.com </email><country>U.S.A</country></customer>
+    <order_date>02 Apr 2024</order_date><status>complete</status><channel>online</channel>
+    <items>
+      <item sku="CA-980" qty="3.0"><name>Cables &amp; Adapters</name><price>15.00</price></item>
+    </items>
+  </order>
+  <order id="ord-100911" modified="2024-04-02T09:23:02Z">
+    <customer><name>Tara Brown</name><email> tara.brown173@example.com </email><country>GB</country></customer>
+    <order_date>2024-04-02</order_date><status>delivered</status><channel>MOBILE</channel>
+    <items>
+      <item sku="PH-940" qty="5.0"><name>Phone Case</name><price>12.99</price></item>
+    </items>
+  </order>
+  <order id="100819" modified="2024-04-03T15:56:49Z">
+    <customer><name>  Uma   Martin </name><email>UMA.MARTIN32@EXAMPLE.COM</email><country>US</country></customer>
+    <order_date>2024-03-18T15:02:00Z</order_date><status>Completed</status><channel>MOBILE</channel>
+    <items>
+      <item sku="SW-910" qty=" 2 "><name>Network Switch</name><price>59.50</price></item>
+      <item sku="LM-970" qty=" 2 "><name>LED Desk Lamp</name><price>$27.50</price></item>
+      <item sku="CG-950" qty="1"><name>Phone Charger</name><price> $19.99 </price></item>
+      <item sku="CB-010" qty="1"><name>USB-C Cable</name><price>7.99</price></item>
+    </items>
+  </order>
+  <order id="ORD-100553" modified="2024-02-22T20:23:42Z">
+    <customer><name>Judy Lee</name><email> judy.lee168@example.com </email><country>DE</country></customer>
+    <order_date>02/22/2024</order_date><status> Processing</status><channel>App</channel>
+    <items>
+      <item sku="HD-810" qty=" 1 "><name>2TB External Drive</name><price>$74.99</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100677 " modified="2024-04-01T06:35:52Z">
+    <customer><name>Tara Thomas</name><email>tara.thomas183@example.com</email><country>Australia</country></customer>
+    <order_date>03/04/2024</order_date><status> Processing</status><channel>online</channel>
+    <items>
+      <item sku="SW-910" qty="1.0"><name>Network Switch</name><price>$59.50</price></item>
+      <item sku="LP-700" qty=" 2 "><name>Laptop Stand</name><price>$34.90</price></item>
+      <item sku="HP-600" qty=" 2 "><name>Noise Cancelling Headphones</name><price>189.00</price></item>
+      <item sku="KB-100" qty="2"><name>Mechanical Keyboard</name><price>$89.99</price></item>
+    </items>
+  </order>
+  <order id="ORD-100960" modified="2024-04-02T00:26:50Z">
+    <customer><name>  Grace   Smith </name><email>GRACE.SMITH91@EXAMPLE.COM</email><country>Deutschland</country></customer>
+    <order_date>02 Apr 2024</order_date><status> Shipped </status><channel>retail</channel>
+    <items>
+      <item sku="PR-920" qty="3.0"><name>Laser Printer</name><price>$219.00</price></item>
+      <item sku="LP-700" qty="2"><name>Laptop Stand</name><price> $34.9 </price></item>
+    </items>
+  </order>
+  <order id="100102" modified="2024-04-03T22:06:16Z">
+    <customer><name>Carol Martin</name><email> carol.martin81@example.com </email><country>France</country></customer>
+    <order_date>01/10/2024</order_date><status>delivered</status><channel>retail</channel>
+    <items>
+      <item sku="SD-800" qty="3.0"><name>1TB SSD</name><price>$99.00</price></item>
+      <item sku="PW-990" qty="1"><name>Power Bank</name><price>35.00</price></item>
+      <item sku="MN-300" qty=" 5 "><name>27in Monitor</name><price>$299.50</price></item>
+      <item sku="PH-940" qty=" 1 "><name>Phone Case</name><price> $12.99 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100172" modified="2024-01-17T13:37:25Z">
+    <customer><name>Xavier Moore</name><email>XAVIER.MOORE136@EXAMPLE.COM</email><country>U.S.A</country></customer>
+    <order_date>2024-01-17</order_date><status>Completed</status><channel>Phone</channel>
+    <items>
+      <item sku="PW-990" qty=" 1 "><name>Power Bank</name><price>35</price></item>
+      <item sku="RT-900" qty="1"><name>WiFi Router</name><price>129</price></item>
+      <item sku="PH-940" qty="5"><name>Phone Case</name><price>12.99</price></item>
+    </items>
+  </order>
+  <order id="ORD-100527" modified="2024-04-01T13:10:15Z">
+    <customer><name>yusuf lee</name><email>YUSUF.LEE51@EXAMPLE.COM</email><country>IN</country></customer>
+    <order_date>2024-02-19</order_date><status>Completed</status><channel>web</channel>
+    <items>
+      <item sku="CA-980" qty="1.0"><name>Cables &amp; Adapters</name><price> $15.00 </price></item>
+    </items>
+  </order>
+  <order id="ord-100953" modified="2024-04-03T19:20:21Z">
+    <customer><name>judy walker</name><email>judy.walker159@example.com</email><country>usa</country></customer>
+    <order_date>2024-04-03</order_date><status>Delivered</status><channel>store</channel>
+    <items>
+      <item sku="MS-200" qty="2"><name>Wireless Mouse</name><price>24.50</price></item>
+      <item sku="CG-950" qty="2"><name>Phone Charger</name><price>19.99</price></item>
+      <item sku="TB-930" qty="1"><name>10in Tablet</name><price>259.00</price></item>
+    </items>
+  </order>
+  <order id="ord-100721" modified="2024-03-09T16:46:31Z">
+    <customer><name>wendy brown</name><email> wendy.brown23@example.com </email><country>DE</country></customer>
+    <order_date>03/09/2024</order_date><status>delivered</status><channel>web</channel>
+    <items>
+      <item sku="CH-720" qty="3"><name>Ergonomic Chair</name><price>$329</price></item>
+      <item sku="SP-610" qty="3.0"><name>Bluetooth Speaker</name><price>49.95</price></item>
+      <item sku="CG-950" qty="5"><name>Phone Charger</name><price> $19.99 </price></item>
+      <item sku="MC-960" qty=" 2 "><name>USB Microphone</name><price>$79.00</price></item>
+    </items>
+  </order>
+  <order id="ord-100886" modified="2024-03-24T10:50:48Z">
+    <customer><name>  Judy   Lee </name><email>judy.lee168@example.com</email><country>Germany</country></customer>
+    <order_date>2024-03-24T02:08:00Z</order_date><status>processing</status><channel>App</channel>
+    <items>
+      <item sku="HD-810" qty="2"><name>2TB External Drive</name><price> $74.99 </price></item>
+      <item sku="MN-300" qty="3.0"><name>27in Monitor</name><price>$299.5</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100535 " modified="2024-02-20T07:16:31Z">
+    <customer><name>NOAH DAVIS</name><email> noah.davis127@example.com </email><country>United States</country></customer>
+    <order_date>2024-02-20</order_date><status> Processing</status><channel>online</channel>
+    <items>
+      <item sku="LM-970" qty="1.0"><name>LED Desk Lamp</name><price> $27.50 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100659" modified="2024-04-03T08:49:39Z">
+    <customer><name>Eve Moore</name><email> eve.moore33@example.com </email><country>Canada</country></customer>
+    <order_date>2024-03-03</order_date><status>delivered</status><channel>App</channel>
+    <items>
+      <item sku="HP-600" qty="1"><name>Noise Cancelling Headphones</name><price> $189.00 </price></item>
+    </items>
+  </order>
+  <order id="ORD-900045" modified="2024-04-02T18:18:00Z">
+    <customer><name>  Zoe   Walker </name><email>zoe.walker153@example.com</email><country>CA</country></customer>
+    <order_date>2024-04-02</order_date><status>shipped</status><channel>mobile</channel>
+    <items>
+      <item sku="RT-900" qty="2"><name>WiFi Router</name><price>-5.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100122" modified="2024-04-03T16:15:12Z">
+    <customer><name>Alice Garcia</name><email>ALICE.GARCIA134@EXAMPLE.COM</email><country>CA</country></customer>
+    <order_date>2024-01-12</order_date><status>shipped</status><channel>mobile</channel>
+    <items>
+      <item sku="CH-720" qty=" 3 "><name>Ergonomic Chair</name><price>329</price></item>
+      <item sku="WC-500" qty=" 3 "><name>HD Webcam</name><price>59</price></item>
+    </items>
+  </order>
+  <order id=" ORD-100043 " modified="2024-01-04T17:18:01Z">
+    <customer><name>judy lee</name><email>judy.lee168@example.com</email><country>Germany</country></customer>
+    <order_date>2024-01-04T16:29:00Z</order_date><status> Shipped </status><channel>mobile</channel>
+    <items>
+      <item sku="LP-700" qty="2"><name>Laptop Stand</name><price>34.90</price></item>
+      <item sku="KB-100" qty="5"><name>Mechanical Keyboard</name><price>$89.99</price></item>
+    </items>
+  </order>
+  <order id="ORD-100932" modified="2024-04-03T05:47:54Z">
+    <customer><name>HEIDI TAYLOR</name><email>heidi.taylor69@example.com</email><country>Germany</country></customer>
+    <order_date>04/03/2024</order_date><status>SHIPPED</status><channel>store</channel>
+    <items>
+      <item sku="PW-990" qty="2"><name>Power Bank</name><price>35.00</price></item>
+    </items>
+  </order>
+  <order id="ord-100650" modified="2024-04-02T00:23:20Z">
+    <customer><name>Wendy Anderson</name><email>WENDY.ANDERSON111@EXAMPLE.COM</email><country>Deutschland</country></customer>
+    <order_date>03/02/2024</order_date><status>complete</status><channel>mobile</channel>
+    <items>
+      <item sku="LM-970" qty=" 1 "><name>LED Desk Lamp</name><price> $27.50 </price></item>
+      <item sku="SD-800" qty="1"><name>1TB SSD</name><price> $99.00 </price></item>
+      <item sku="DK-710" qty="1"><name>Standing Desk</name><price>449.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100426" modified="2024-02-10T18:07:47Z">
+    <customer><name>Dan Jackson</name><email>DAN.JACKSON53@EXAMPLE.COM</email><country>India</country></customer>
+    <order_date>2024-02-10</order_date><status>complete</status><channel>retail</channel>
+    <items>
+      <item sku="RT-900" qty="1"><name>WiFi Router</name><price>$129.00</price></item>
+      <item sku="MS-200" qty="5"><name>Wireless Mouse</name><price> $24.50 </price></item>
+      <item sku="CH-720" qty="1.0"><name>Ergonomic Chair</name><price>329</price></item>
+    </items>
+  </order>
+  <order id="ord-100540" modified="2024-04-03T20:33:49Z">
+    <customer><name>Uma Smith</name><email> uma.smith67@example.com </email><country>US</country></customer>
+    <order_date>02/20/2024</order_date><status>delivered</status><channel/>
+    <items>
+      <item sku="CG-950" qty="1"><name>Phone Charger</name><price>19.99</price></item>
+      <item sku="HD-810" qty="1.0"><name>2TB External Drive</name><price>74.99</price></item>
+    </items>
+  </order>
+  <order id="ord-100921" modified="2024-04-01T06:34:54Z">
+    <customer><name>alice garcia</name><email> alice.garcia134@example.com </email><country>Canada</country></customer>
+    <order_date>1711972800</order_date><status>PENDING</status><channel>Web</channel>
+    <items>
+      <item sku="SV-999" qty="3"><name>Server Rack</name><price>1250.99</price></item>
+      <item sku="DK-710" qty="5"><name>Standing Desk</name><price>449</price></item>
+    </items>
+  </order>
+  <order id="ord-100941" modified="2024-04-03T23:43:11Z">
+    <customer><name>Tara Thomas</name><email>TARA.THOMAS52@EXAMPLE.COM</email><country>United Kingdom</country></customer>
+    <order_date>04/03/2024</order_date><status> Processing</status><channel>Web</channel>
+    <items>
+      <item sku="PW-990" qty="1"><name>Power Bank</name><price>$35.00</price></item>
+      <item sku="HP-600" qty="1"><name>Noise Cancelling Headphones</name><price>$189</price></item>
+    </items>
+  </order>
+  <order id="100381" modified="2024-04-01T19:23:25Z">
+    <customer><name>JUDY ANDERSON</name><email>JUDY.ANDERSON163@EXAMPLE.COM</email><country>US</country></customer>
+    <order_date>2024-02-05</order_date><status>Completed</status><channel>phone</channel>
+    <items>
+      <item sku="SD-800" qty=" 5 "><name>1TB SSD</name><price>99.00</price></item>
+    </items>
+  </order>
+  <order id="ORD-100706" modified="2024-03-07T09:30:02Z">
+    <customer><name>Rosa Smith</name><email> rosa.smith92@example.com </email><country>CA</country></customer>
+    <order_date>03/07/2024</order_date><status>Delivered</status><channel>mobile</channel>
+    <items>
+      <item sku="PW-990" qty="2.0"><name>Power Bank</name><price> $35.00 </price></item>
+      <item sku="CA-980" qty=" 3 "><name>Cables &amp; Adapters</name><price> $15.00 </price></item>
+      <item sku="KB-100" qty="5.0"><name>Mechanical Keyboard</name><price>$89.99</price></item>
+      <item sku="LM-970" qty="1"><name>LED Desk Lamp</name><price>$27.50</price></item>
+    </items>
+  </order>
+  <order id="100548" modified="2024-04-03T20:18:33Z">
+    <customer><name>noah davis</name><email>noah.davis127@example.com</email><country>US</country></customer>
+    <order_date>2024-02-21</order_date><status> Shipped </status><channel>MOBILE</channel>
+    <items>
+      <item sku="CA-980" qty="3"><name>Cables &amp; Adapters</name><price> $15.00 </price></item>
+    </items>
+  </order>
+  <order id="ORD-100276" modified="2024-04-03T17:30:08Z">
+    <customer><name>YUSUF THOMAS</name><email>YUSUF.THOMAS11@EXAMPLE.COM</email><country>usa</country></customer>
+    <order_date>26 Jan 2024</order_date><status>complete</status><channel>Web</channel>
+    <items>
+      <item sku="HB-400" qty="3.0"><name>USB-C Hub</name><price>$39</price></item>
+    </items>
+  </order>
+  <order id="ORD-100955" modified="2024-04-02T06:18:05Z">
+    <customer><name>Liam Wilson</name><email>LIAM.WILSON22@EXAMPLE.COM</email><country>CA</country></customer>
+    <order_date>2024-04-02</order_date><status>complete</status><channel>Web</channel>
+    <items>
+      <item sku="SV-999" qty="5"><name>Server Rack</name><price>1250.99</price></item>
+      <item sku="HD-810" qty="1"><name>2TB External Drive</name><price> $74.99 </price></item>
+    </items>
+  </order>
+  <order id=" ORD-900044 " modified="2024-04-02T09:39:57Z">
+    <customer><name>  Ivan   Lee </name><email>ivan.lee118@example.com</email><country>GB</country></customer>
+    <order_date>2024-13-01</order_date><status>processing</status><channel>Web</channel>
+    <items>
+      <item sku="PR-920" qty="3"><name>Laser Printer</name><price>219.00</price></item>
+      <item sku="WC-500" qty="5.0"><name>HD Webcam</name><price> $59.00 </price></item>
+      <item sku="MC-960" qty="1"><name>USB Microphone</name><price>79.00</price></item>
+    </items>
+  </order>
+  <order id="ord-100933" modified="2024-04-03T09:18:17Z">
+    <customer><name>rosa taylor</name><email>rosa.taylor43@example.com</email><country>Canada</country></customer>
+    <order_date>04/03/2024</order_date><status>Completed</status><channel>Phone</channel>
+    <items>
+      <item sku="PH-940" qty="5"><name>Phone Case</name><price> $12.99 </price></item>
+      <item sku="LP-700" qty="5"><name>Laptop Stand</name><price> $34.90 </price></item>
+    </items>
+  </order>
+  <order id="ord-100262" modified="2024-04-02T04:05:14Z">
+    <customer><name>QUINN HARRIS</name><email>quinn.harris185@example.com</email><country>France</country></customer>
+    <order_date>2024-01-25</order_date><status>complete</status><channel>online</channel>
+    <items>
+      <item sku="WC-500" qty="2.0"><name>HD Webcam</name><price>59.00</price></item>
+      <item sku="CA-980" qty=" 1 "><name>Cables &amp; Adapters</name><price> $15 </price></item>
+      <item sku="CH-720" qty="1.0"><name>Ergonomic Chair</name><price>329</price></item>
+    </items>
+  </order>
+  <order id="100347" modified="2024-02-02T08:48:58Z">
+    <customer><name>Liam Walker</name><email>liam.walker130@example.com</email><country>IN</country></customer>
+    <order_date>2024-02-02</order_date><status>cancelled</status><channel>online</channel>
+    <items>
+      <item sku="HD-810" qty=" 1 "><name>2TB External Drive</name><price>74.99</price></item>
+      <item sku="SP-610" qty="2"><name>Bluetooth Speaker</name><price>49.95</price></item>
+    </items>
+  </order>
+  <order id="ORD-100917" modified="2024-04-02T03:15:15Z">
+    <customer><name/><email>sam.young71@example.com</email><country>UK</country></customer>
+    <order_date>2024-04-02</order_date><status> Shipped </status><channel>online</channel>
+    <items>
+      <item sku="MS-200" qty="1"><name>Wireless Mouse</name><price> $24.50 </price></item>
+      <item sku="CB-010" qty="1"><name>USB-C Cable</name><price> $7.99 </price></item>
+    </items>
+  </order>
+  <order id="ord-100903" modified="2024-04-03T15:50:13Z">
+    <customer><name>rosa smith</name><email>rosa.smith92@example.com</email><country>CA</country></customer>
+    <order_date>04/03/2024</order_date><status>complete</status><channel>MOBILE</channel>
+    <items>
+      <item sku="DK-710" qty="2"><name>Standing Desk</name><price>$449.00</price></item>
+      <item sku="LP-700" qty=" 3 "><name>Laptop Stand</name><price> $34.90 </price></item>
+      <item sku="SD-800" qty=" 5 "><name>1TB SSD</name><price> $99 </price></item>
+      <item sku="SP-610" qty="2.0"><name>Bluetooth Speaker</name><price>49.95</price></item>
+    </items>
+  </order>
+</orders>
