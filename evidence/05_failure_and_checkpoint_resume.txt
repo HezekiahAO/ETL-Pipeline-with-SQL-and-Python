@@ -1,0 +1,180 @@
+
+==================================================================
+## EVIDENCE 05 - ERROR HANDLING + CHECKPOINT RESTART
+==================================================================
+Scenario: a crash happens inside batch 4 of a full load (fault injected after the batch's work, before COMMIT).
+
+==================================================================
+## step 1: run with --fail-at-batch 4
+==================================================================
+16:51:47 INFO    etl 1.0.0 | pipeline=orders_xml
+16:51:47 INFO    raw file archived (file_id=1)
+16:51:47 INFO    run 1 started | mode=full file=raw_orders_full.xml batch_size=100 watermark=None
+16:51:47 INFO    batch 1   positions     1-100   committed | in=100  inserted=98   updated=0   rejected=2   dup=0   stale=0  
+16:51:47 INFO    batch 2   positions   101-200   committed | in=100  inserted=96   updated=1   rejected=3   dup=0   stale=0  
+16:51:47 INFO    batch 3   positions   201-300   committed | in=100  inserted=96   updated=0   rejected=2   dup=1   stale=1  
+16:51:47 ERROR   run 1 FAILED in batch 4: InjectedFailure: simulated crash in batch 4 (positions 301-400) before commit  (earlier batches stay committed; see etl.checkpoint)
+16:51:47 ERROR   simulated crash in batch 4 (positions 301-400) before commit
+process exit code: 1
+
+==================================================================
+## step 2: what is in the database after the crash?
+==================================================================
+ orders_in_dw_after_crash 
+--------------------------
+                      290
+(1 row)
+
+ staged_rows_of_failed_batch 
+-----------------------------
+                           0
+(1 row)
+
+ pipeline_name | last_batch_no | last_position | checkpoint_status 
+---------------+---------------+---------------+-------------------
+ orders_xml    |             3 |           300 | in_progress
+(1 row)
+
+-[ RECORD 1 ]-----+------------------------------------------------------------------------------
+run_id            | 1
+status            | failed
+batches_completed | 3
+records_inserted  | 290
+error_batch_no    | 4
+error_message     | InjectedFailure: simulated crash in batch 4 (positions 301-400) before commit
+
+ batch_no | first | last | status  | in  |                                 error_message                                 
+----------+-------+------+---------+-----+-------------------------------------------------------------------------------
+        1 |     1 |  100 | success | 100 | 
+        2 |   101 |  200 | success | 100 | 
+        3 |   201 |  300 | success | 100 | 
+        4 |   301 |  400 | failed  | 100 | InjectedFailure: simulated crash in batch 4 (positions 301-400) before commit
+(4 rows)
+
+
+==================================================================
+## step 3: restart = run exactly the same command again (no flags, no manual cleanup)
+==================================================================
+16:51:48 INFO    etl 1.0.0 | pipeline=orders_xml
+16:51:48 INFO    raw file already archived (file_id=1) - same sha256, not storing it again
+16:51:48 WARNING RESUMING run 2: checkpoint of failed run 1 says batch 3 / position 300 are committed
+16:51:48 INFO    run 2 started | mode=full file=raw_orders_full.xml batch_size=100 watermark=None
+16:51:48 INFO    batch 4   positions   301-400   committed | in=100  inserted=89   updated=1   rejected=7   dup=1   stale=2  
+16:51:48 INFO    batch 5   positions   401-500   committed | in=100  inserted=88   updated=3   rejected=7   dup=2   stale=0  
+16:51:48 INFO    batch 6   positions   501-600   committed | in=100  inserted=91   updated=0   rejected=3   dup=6   stale=0  
+16:51:48 INFO    batch 7   positions   601-700   committed | in=100  inserted=83   updated=4   rejected=7   dup=6   stale=0  
+16:51:48 INFO    batch 8   positions   701-800   committed | in=100  inserted=84   updated=3   rejected=2   dup=9   stale=2  
+16:51:49 INFO    batch 9   positions   801-900   committed | in=100  inserted=84   updated=5   rejected=2   dup=9   stale=0  
+16:51:49 INFO    batch 10  positions   901-1000  committed | in=100  inserted=75   updated=6   rejected=4   dup=10  stale=5  
+16:51:49 INFO    batch 11  positions  1001-1027  committed | in=27   inserted=16   updated=2   rejected=1   dup=7   stale=1  
+16:51:49 INFO    run 2 SUCCESS | extracted=1027 skipped_watermark=0 skipped_checkpoint=300 staged=727 | inserted=610 updated=24 rejected=33 duplicate=50 stale=10 | batches=8
+process exit code: 0
+
+==================================================================
+## step 4: metadata after recovery
+==================================================================
+--- etl.pipeline_runs: one row per run ---
+ run_id | mode |     source_file     | status  | started  |  ended   | extracted | skip_wm | skip_cp | staged | ins | upd | loaded | rej | dup | stale | batches | resumed_from 
+--------+------+---------------------+---------+----------+----------+-----------+---------+---------+--------+-----+-----+--------+-----+-----+-------+---------+--------------
+      1 | full | raw_orders_full.xml | failed  | 16:51:47 | 16:51:47 |       400 |       0 |       0 |    300 | 290 |   1 |    291 |   7 |   1 |     1 |       3 |             
+      2 | full | raw_orders_full.xml | success | 16:51:48 | 16:51:49 |      1027 |       0 |     300 |    727 | 610 |  24 |    634 |  33 |  50 |    10 |       8 |            1
+(2 rows)
+
+--- errors recorded ---
+ run_id | batch |                                 error_message                                 
+--------+-------+-------------------------------------------------------------------------------
+      1 |     4 | InjectedFailure: simulated crash in batch 4 (positions 301-400) before commit
+(1 row)
+
+--- etl.batch_log (latest 14) ---
+ run_id | batch_no | first | last | status  | in  | ins | upd | rej | dup | stale |                            error                             
+--------+----------+-------+------+---------+-----+-----+-----+-----+-----+-------+--------------------------------------------------------------
+      2 |       11 |  1001 | 1027 | success |  27 |  16 |   2 |   1 |   7 |     1 | 
+      2 |       10 |   901 | 1000 | success | 100 |  75 |   6 |   4 |  10 |     5 | 
+      2 |        9 |   801 |  900 | success | 100 |  84 |   5 |   2 |   9 |     0 | 
+      2 |        8 |   701 |  800 | success | 100 |  84 |   3 |   2 |   9 |     2 | 
+      2 |        7 |   601 |  700 | success | 100 |  83 |   4 |   7 |   6 |     0 | 
+      2 |        6 |   501 |  600 | success | 100 |  91 |   0 |   3 |   6 |     0 | 
+      2 |        5 |   401 |  500 | success | 100 |  88 |   3 |   7 |   2 |     0 | 
+      2 |        4 |   301 |  400 | success | 100 |  89 |   1 |   7 |   1 |     2 | 
+      1 |        4 |   301 |  400 | failed  | 100 |   0 |   0 |   0 |   0 |     0 | InjectedFailure: simulated crash in batch 4 (positions 301-4
+      1 |        3 |   201 |  300 | success | 100 |  96 |   0 |   2 |   1 |     1 | 
+      1 |        2 |   101 |  200 | success | 100 |  96 |   1 |   3 |   0 |     0 | 
+      1 |        1 |     1 |  100 | success | 100 |  98 |   0 |   2 |   0 |     0 | 
+(12 rows)
+
+--- etl.checkpoint ---
+ pipeline_name |   file_sha   | last_batch_no | last_position |  status   | run_id 
+---------------+--------------+---------------+---------------+-----------+--------
+ orders_xml    | b0204ff3e2fb |            11 |          1027 | completed |      2
+(1 row)
+
+--- etl.watermark ---
+ pipeline_name |     high_watermark     | run_id 
+---------------+------------------------+--------
+ orders_xml    | 2024-03-25 20:56:03+00 |      2
+(1 row)
+
+--- etl.source_registry (dedup registry) summary ---
+ keys | keys_with_updates | max_version 
+------+-------------------+-------------
+  900 |                25 |           2
+(1 row)
+
+
+==================================================================
+## step 5: is the recovered warehouse identical to an uninterrupted load? (fingerprint vs evidence 01)
+==================================================================
+fact_orders | 900 | fbcfc64a021cb7e96ab1676e86bf5f5e
+fact_order_items | 1953 | d607ac72069d9b75022406b975f06b1b
+dim_customer | 188 | cb7c8a9c01f9b4e3311137be0b21cce5
+dim_product | 24 | 385919a2999cf93d4dd4630b4eabcb3f
+>>> IDENTICAL to the clean full load of evidence 01
+
+==================================================================
+## step 6: validation
+==================================================================
+16:51:49 INFO    etl 1.0.0 | pipeline=orders_xml
+
+ #  RESULT CHECK / DETAIL
+ 1  PASS   RECORD COUNTS: extracted = skipped + staged (every successful run)
+            violating runs: 0
+ 2  PASS   RECORD COUNTS: staged = inserted + updated + rejected + duplicate + stale
+            violating runs: 0
+ 3  PASS   RECORD COUNTS: every staged row has a cleaned row
+            staged rows never cleaned: 0
+ 4  PASS   RECORD COUNTS: no cleaned row left pending
+            pending rows: 0
+ 5  PASS   RECORD COUNTS: fact_orders = source_registry
+            fact_orders=900 registry=900
+ 6  PASS   RECORD COUNTS: loaded totals
+            orders=900 lines=1953 customers=188 products=24 rejected_rows(history)=40
+ 7  PASS   DUPLICATES: no duplicate order_id / customer email / sku
+            duplicate keys: 0
+ 8  PASS   DUPLICATES: same content never loaded twice
+            order+hash loaded more than once: 0
+ 9  PASS   DUPLICATES: dw hash = registry hash
+            mismatches: 0
+10  PASS   MISSING VALUES: required fact columns not null
+            null violations: 0
+11  PASS   MISSING VALUES: dimension keys / item values not null
+            null violations: 0
+12  PASS   MISSING VALUES: optional attributes (reported, imputed)
+            customers w/o name=1, w/o country=0, products w/o name=0, orders channel=unknown 27, status=unknown 0
+13  PASS   INTEGRITY: order_total = sum(lines), item_count = #lines
+            mismatches: 0
+14  PASS   LOADS: no run or batch stuck in running
+            stuck: 0
+15  PASS   LOADS: no unfinished checkpoint (nothing left to resume)
+            in_progress checkpoints: 0
+16  PASS   LOADS: failed runs on record (history, informational)
+            failed runs: 1
+
+Ground-truth comparison (expected_full.json)
+    PASS  valid unique orders: expected=900 actual=900
+    PASS  total revenue: expected=660194.14 actual=660194.14
+    PASS  distinct customers: expected=188 actual=188
+    PASS  distinct products: expected=24 actual=24
+    PASS  orders by status: expected={'cancelled': 64, 'delivered': 411, 'pending': 101, 'processing': 90, 'shipped': 234} actual={'delivered': 411, 'processing': 90, 'cancelled': 64, 'pending': 101, 'shipped': 234}
+
+OVERALL: ALL CHECKS PASSED
