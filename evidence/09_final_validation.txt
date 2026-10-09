@@ -1,0 +1,48 @@
+
+==================================================================
+## EVIDENCE 09 - FINAL VALIDATION (after full + incremental loads)
+==================================================================
+16:51:46 INFO    etl 1.0.0 | pipeline=orders_xml
+
+ #  RESULT CHECK / DETAIL
+ 1  PASS   RECORD COUNTS: extracted = skipped + staged (every successful run)
+            violating runs: 0
+ 2  PASS   RECORD COUNTS: staged = inserted + updated + rejected + duplicate + stale
+            violating runs: 0
+ 3  PASS   RECORD COUNTS: every staged row has a cleaned row
+            staged rows never cleaned: 0
+ 4  PASS   RECORD COUNTS: no cleaned row left pending
+            pending rows: 0
+ 5  PASS   RECORD COUNTS: fact_orders = source_registry
+            fact_orders=960 registry=960
+ 6  PASS   RECORD COUNTS: loaded totals
+            orders=960 lines=2093 customers=189 products=24 rejected_rows(history)=126
+ 7  PASS   DUPLICATES: no duplicate order_id / customer email / sku
+            duplicate keys: 0
+ 8  PASS   DUPLICATES: same content never loaded twice
+            order+hash loaded more than once: 0
+ 9  PASS   DUPLICATES: dw hash = registry hash
+            mismatches: 0
+10  PASS   MISSING VALUES: required fact columns not null
+            null violations: 0
+11  PASS   MISSING VALUES: dimension keys / item values not null
+            null violations: 0
+12  PASS   MISSING VALUES: optional attributes (reported, imputed)
+            customers w/o name=1, w/o country=0, products w/o name=0, orders channel=unknown 29, status=unknown 0
+13  PASS   INTEGRITY: order_total = sum(lines), item_count = #lines
+            mismatches: 0
+14  PASS   LOADS: no run or batch stuck in running
+            stuck: 0
+15  PASS   LOADS: no unfinished checkpoint (nothing left to resume)
+            in_progress checkpoints: 0
+16  PASS   LOADS: failed runs on record (history, informational)
+            failed runs: 0
+
+Ground-truth comparison (expected_incremental.json)
+    PASS  valid unique orders: expected=960 actual=960
+    PASS  total revenue: expected=728924.11 actual=728924.11
+    PASS  distinct customers: expected=189 actual=189
+    PASS  distinct products: expected=24 actual=24
+    PASS  orders by status: expected={'cancelled': 68, 'delivered': 451, 'pending': 108, 'processing': 92, 'shipped': 241} actual={'delivered': 451, 'processing': 92, 'cancelled': 68, 'pending': 108, 'shipped': 241}
+
+OVERALL: ALL CHECKS PASSED
