@@ -1,0 +1,97 @@
+
+==================================================================
+## EVIDENCE 02 - IDEMPOTENCY: running the same file again must change nothing
+==================================================================
+warehouse fingerprint BEFORE:
+fact_orders | 900 | fbcfc64a021cb7e96ab1676e86bf5f5e
+fact_order_items | 1953 | d607ac72069d9b75022406b975f06b1b
+dim_customer | 188 | cb7c8a9c01f9b4e3311137be0b21cce5
+dim_product | 24 | 385919a2999cf93d4dd4630b4eabcb3f
+
+==================================================================
+## re-run #1: same file, --mode full
+==================================================================
+16:51:39 INFO    etl 1.0.0 | pipeline=orders_xml
+16:51:39 INFO    raw file already archived (file_id=1) - same sha256, not storing it again
+16:51:39 INFO    run 2 started | mode=full file=raw_orders_full.xml batch_size=100 watermark=2024-03-25 20:56:03+00:00
+16:51:39 INFO    batch 1   positions     1-100   committed | in=100  inserted=0    updated=0   rejected=2   dup=95  stale=3  
+16:51:39 INFO    batch 2   positions   101-200   committed | in=100  inserted=0    updated=0   rejected=3   dup=94  stale=3  
+16:51:39 INFO    batch 3   positions   201-300   committed | in=100  inserted=0    updated=0   rejected=2   dup=94  stale=4  
+16:51:40 INFO    batch 4   positions   301-400   committed | in=100  inserted=0    updated=0   rejected=7   dup=89  stale=4  
+16:51:40 INFO    batch 5   positions   401-500   committed | in=100  inserted=0    updated=0   rejected=7   dup=90  stale=3  
+16:51:40 INFO    batch 6   positions   501-600   committed | in=100  inserted=0    updated=0   rejected=3   dup=95  stale=2  
+16:51:40 INFO    batch 7   positions   601-700   committed | in=100  inserted=0    updated=0   rejected=7   dup=88  stale=5  
+16:51:40 INFO    batch 8   positions   701-800   committed | in=100  inserted=0    updated=0   rejected=2   dup=93  stale=5  
+16:51:40 INFO    batch 9   positions   801-900   committed | in=100  inserted=0    updated=0   rejected=2   dup=96  stale=2  
+16:51:40 INFO    batch 10  positions   901-1000  committed | in=100  inserted=0    updated=0   rejected=4   dup=91  stale=5  
+16:51:40 INFO    batch 11  positions  1001-1027  committed | in=27   inserted=0    updated=0   rejected=1   dup=25  stale=1  
+16:51:40 INFO    run 2 SUCCESS | extracted=1027 skipped_watermark=0 skipped_checkpoint=0 staged=1027 | inserted=0 updated=0 rejected=40 duplicate=950 stale=37 | batches=11
+
+==================================================================
+## re-run #2: same file, --mode incremental
+==================================================================
+16:51:40 INFO    etl 1.0.0 | pipeline=orders_xml
+16:51:40 INFO    raw file already archived (file_id=1) - same sha256, not storing it again
+16:51:40 INFO    run 3 started | mode=incremental file=raw_orders_full.xml batch_size=100 watermark=2024-03-25 20:56:03+00:00
+16:51:41 INFO    batch 1   positions  1023-1023  committed | in=1    inserted=0    updated=0   rejected=0   dup=1   stale=0  
+16:51:41 INFO    run 3 SUCCESS | extracted=1027 skipped_watermark=1026 skipped_checkpoint=0 staged=1 | inserted=0 updated=0 rejected=0 duplicate=1 stale=0 | batches=1
+
+==================================================================
+## re-run #3: same file, --mode full, different batch size (37)
+==================================================================
+16:51:41 INFO    etl 1.0.0 | pipeline=orders_xml
+16:51:41 INFO    raw file already archived (file_id=1) - same sha256, not storing it again
+16:51:41 INFO    run 4 started | mode=full file=raw_orders_full.xml batch_size=37 watermark=2024-03-25 20:56:03+00:00
+16:51:41 INFO    batch 1   positions     1-37    committed | in=37   inserted=0    updated=0   rejected=0   dup=34  stale=3  
+16:51:41 INFO    batch 2   positions    38-74    committed | in=37   inserted=0    updated=0   rejected=0   dup=37  stale=0  
+16:51:41 INFO    batch 3   positions    75-111   committed | in=37   inserted=0    updated=0   rejected=3   dup=34  stale=0  
+16:51:41 INFO    batch 4   positions   112-148   committed | in=37   inserted=0    updated=0   rejected=1   dup=34  stale=2  
+16:51:41 INFO    batch 5   positions   149-185   committed | in=37   inserted=0    updated=0   rejected=1   dup=35  stale=1  
+16:51:41 INFO    batch 6   positions   186-222   committed | in=37   inserted=0    updated=0   rejected=0   dup=35  stale=2  
+16:51:41 INFO    batch 7   positions   223-259   committed | in=37   inserted=0    updated=0   rejected=2   dup=35  stale=0  
+16:51:41 INFO    batch 8   positions   260-296   committed | in=37   inserted=0    updated=0   rejected=0   dup=35  stale=2  
+16:51:41 INFO    batch 9   positions   297-333   committed | in=37   inserted=0    updated=0   rejected=3   dup=32  stale=2  
+16:51:41 INFO    batch 10  positions   334-370   committed | in=37   inserted=0    updated=0   rejected=1   dup=35  stale=1  
+16:51:41 INFO    batch 11  positions   371-407   committed | in=37   inserted=0    updated=0   rejected=4   dup=32  stale=1  
+16:51:41 INFO    batch 12  positions   408-444   committed | in=37   inserted=0    updated=0   rejected=4   dup=32  stale=1  
+16:51:41 INFO    batch 13  positions   445-481   committed | in=37   inserted=0    updated=0   rejected=1   dup=34  stale=2  
+16:51:41 INFO    batch 14  positions   482-518   committed | in=37   inserted=0    updated=0   rejected=1   dup=34  stale=2  
+16:51:42 INFO    batch 15  positions   519-555   committed | in=37   inserted=0    updated=0   rejected=3   dup=34  stale=0  
+16:51:42 INFO    batch 16  positions   556-592   committed | in=37   inserted=0    updated=0   rejected=0   dup=36  stale=1  
+16:51:42 INFO    batch 17  positions   593-629   committed | in=37   inserted=0    updated=0   rejected=1   dup=33  stale=3  
+16:51:42 INFO    batch 18  positions   630-666   committed | in=37   inserted=0    updated=0   rejected=3   dup=34  stale=0  
+16:51:42 INFO    batch 19  positions   667-703   committed | in=37   inserted=0    updated=0   rejected=3   dup=31  stale=3  
+16:51:42 INFO    batch 20  positions   704-740   committed | in=37   inserted=0    updated=0   rejected=2   dup=34  stale=1  
+16:51:42 INFO    batch 21  positions   741-777   committed | in=37   inserted=0    updated=0   rejected=0   dup=35  stale=2  
+16:51:42 INFO    batch 22  positions   778-814   committed | in=37   inserted=0    updated=0   rejected=0   dup=34  stale=3  
+16:51:42 INFO    batch 23  positions   815-851   committed | in=37   inserted=0    updated=0   rejected=1   dup=34  stale=2  
+16:51:42 INFO    batch 24  positions   852-888   committed | in=37   inserted=0    updated=0   rejected=1   dup=36  stale=0  
+16:51:42 INFO    batch 25  positions   889-925   committed | in=37   inserted=0    updated=0   rejected=0   dup=34  stale=3  
+16:51:42 INFO    batch 26  positions   926-962   committed | in=37   inserted=0    updated=0   rejected=2   dup=34  stale=1  
+16:51:42 INFO    batch 27  positions   963-999   committed | in=37   inserted=0    updated=0   rejected=1   dup=32  stale=4  
+16:51:42 INFO    batch 28  positions  1000-1027  committed | in=28   inserted=0    updated=0   rejected=2   dup=25  stale=1  
+16:51:42 INFO    run 4 SUCCESS | extracted=1027 skipped_watermark=0 skipped_checkpoint=0 staged=1027 | inserted=0 updated=0 rejected=40 duplicate=944 stale=43 | batches=28
+
+warehouse fingerprint AFTER 3 re-runs:
+fact_orders | 900 | fbcfc64a021cb7e96ab1676e86bf5f5e
+fact_order_items | 1953 | d607ac72069d9b75022406b975f06b1b
+dim_customer | 188 | cb7c8a9c01f9b4e3311137be0b21cce5
+dim_product | 24 | 385919a2999cf93d4dd4630b4eabcb3f
+>>> IDENTICAL to the fingerprint after the first load: no duplicate rows, no changed rows
+
+==================================================================
+## What each run did (note inserted=0 updated=0 for runs 2-4)
+==================================================================
+ run_id |    mode     | extracted | skip_wm | staged | inserted | updated | rejected | duplicate | stale | batches 
+--------+-------------+-----------+---------+--------+----------+---------+----------+-----------+-------+---------
+      1 | full        |      1027 |       0 |   1027 |      900 |      25 |       40 |        51 |    11 |      11
+      2 | full        |      1027 |       0 |   1027 |        0 |       0 |       40 |       950 |    37 |      11
+      3 | incremental |      1027 |    1026 |      1 |        0 |       0 |        0 |         1 |     0 |       1
+      4 | full        |      1027 |       0 |   1027 |        0 |       0 |       40 |       944 |    43 |      28
+(4 rows)
+
+ fact_orders | lines 
+-------------+-------
+         900 |  1953
+(1 row)
+
