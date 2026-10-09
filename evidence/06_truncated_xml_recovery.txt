@@ -1,0 +1,130 @@
+
+==================================================================
+## EVIDENCE 06 - REAL FAULT: XML FILE TRUNCATED IN TRANSFER, THEN RE-DELIVERED
+==================================================================
+data/raw_orders_truncated.xml = first 300,000 bytes of the full file (cut mid-element)
+
+==================================================================
+## step 1: run on the truncated file
+==================================================================
+16:51:49 INFO    etl 1.0.0 | pipeline=orders_xml
+16:51:49 INFO    raw file archived (file_id=1)
+16:51:49 INFO    run 1 started | mode=full file=raw_orders_truncated.xml batch_size=100 watermark=None
+16:51:50 INFO    batch 1   positions     1-100   committed | in=100  inserted=98   updated=0   rejected=2   dup=0   stale=0  
+16:51:50 INFO    batch 2   positions   101-200   committed | in=100  inserted=96   updated=1   rejected=3   dup=0   stale=0  
+16:51:50 INFO    batch 3   positions   201-300   committed | in=100  inserted=96   updated=0   rejected=2   dup=1   stale=1  
+16:51:50 INFO    batch 4   positions   301-400   committed | in=100  inserted=89   updated=1   rejected=7   dup=1   stale=2  
+16:51:50 INFO    batch 5   positions   401-500   committed | in=100  inserted=88   updated=3   rejected=7   dup=2   stale=0  
+16:51:50 INFO    batch 6   positions   501-600   committed | in=100  inserted=91   updated=0   rejected=3   dup=6   stale=0  
+16:51:50 ERROR   run 1 FAILED in batch 7: ParseError: no element found: line 4975, column 2  (earlier batches stay committed; see etl.checkpoint)
+16:51:50 ERROR   pipeline failed: ParseError: no element found: line 4975, column 2
+process exit code: 1
+
+==================================================================
+## step 2: state after the failure
+==================================================================
+ run_id | status | extracted | batches_completed | error_batch_no |                       error                       
+--------+--------+-----------+-------------------+----------------+---------------------------------------------------
+      1 | failed |       607 |                 6 |              7 | ParseError: no element found: line 4975, column 2
+(1 row)
+
+ orders_loaded_from_good_prefix 
+--------------------------------
+                            558
+(1 row)
+
+
+==================================================================
+## step 3: the complete file arrives (different sha256 => no checkpoint to reuse; the dedup registry is the safety net)
+==================================================================
+16:51:50 INFO    etl 1.0.0 | pipeline=orders_xml
+16:51:50 INFO    raw file archived (file_id=2)
+16:51:50 INFO    run 2 started | mode=full file=raw_orders_full.xml batch_size=100 watermark=None
+16:51:51 INFO    batch 1   positions     1-100   committed | in=100  inserted=0    updated=0   rejected=2   dup=96  stale=2  
+16:51:51 INFO    batch 2   positions   101-200   committed | in=100  inserted=0    updated=0   rejected=3   dup=95  stale=2  
+16:51:51 INFO    batch 3   positions   201-300   committed | in=100  inserted=0    updated=0   rejected=2   dup=96  stale=2  
+16:51:51 INFO    batch 4   positions   301-400   committed | in=100  inserted=0    updated=0   rejected=7   dup=91  stale=2  
+16:51:51 INFO    batch 5   positions   401-500   committed | in=100  inserted=0    updated=0   rejected=7   dup=93  stale=0  
+16:51:51 INFO    batch 6   positions   501-600   committed | in=100  inserted=0    updated=0   rejected=3   dup=97  stale=0  
+16:51:51 INFO    batch 7   positions   601-700   committed | in=100  inserted=83   updated=4   rejected=7   dup=6   stale=0  
+16:51:51 INFO    batch 8   positions   701-800   committed | in=100  inserted=84   updated=3   rejected=2   dup=9   stale=2  
+16:51:52 INFO    batch 9   positions   801-900   committed | in=100  inserted=84   updated=5   rejected=2   dup=9   stale=0  
+16:51:52 INFO    batch 10  positions   901-1000  committed | in=100  inserted=75   updated=6   rejected=4   dup=10  stale=5  
+16:51:52 INFO    batch 11  positions  1001-1027  committed | in=27   inserted=16   updated=2   rejected=1   dup=7   stale=1  
+16:51:52 INFO    run 2 SUCCESS | extracted=1027 skipped_watermark=0 skipped_checkpoint=0 staged=1027 | inserted=342 updated=20 rejected=40 duplicate=609 stale=16 | batches=11
+process exit code: 0
+ run_id | status  | extracted | staged | inserted | updated | duplicate | stale | rejected 
+--------+---------+-----------+--------+----------+---------+-----------+-------+----------
+      1 | failed  |       607 |    600 |      558 |       5 |        10 |     3 |       24
+      2 | success |      1027 |   1027 |      342 |      20 |       609 |    16 |       40
+(2 rows)
+
+
+==================================================================
+## step 4: operator retires the checkpoint of the broken file (it will never be resumed)
+==================================================================
+16:51:52 INFO    etl 1.0.0 | pipeline=orders_xml
+16:51:52 INFO    1 checkpoint(s) abandoned for raw_orders_truncated.xml (sha256 3e6e71ba6c1f...)
+   file_sha   | last_batch_no | last_position |  status   
+--------------+---------------+---------------+-----------
+ b0204ff3e2fb |            11 |          1027 | completed
+ 3e6e71ba6c1f |             6 |           600 | abandoned
+(2 rows)
+
+
+==================================================================
+## step 5: result identical to an uninterrupted load?
+==================================================================
+fact_orders | 900 | fbcfc64a021cb7e96ab1676e86bf5f5e
+fact_order_items | 1953 | d607ac72069d9b75022406b975f06b1b
+dim_customer | 188 | cb7c8a9c01f9b4e3311137be0b21cce5
+dim_product | 24 | 385919a2999cf93d4dd4630b4eabcb3f
+>>> IDENTICAL to the clean full load of evidence 01
+
+==================================================================
+## step 6: validation
+==================================================================
+16:51:52 INFO    etl 1.0.0 | pipeline=orders_xml
+
+ #  RESULT CHECK / DETAIL
+ 1  PASS   RECORD COUNTS: extracted = skipped + staged (every successful run)
+            violating runs: 0
+ 2  PASS   RECORD COUNTS: staged = inserted + updated + rejected + duplicate + stale
+            violating runs: 0
+ 3  PASS   RECORD COUNTS: every staged row has a cleaned row
+            staged rows never cleaned: 0
+ 4  PASS   RECORD COUNTS: no cleaned row left pending
+            pending rows: 0
+ 5  PASS   RECORD COUNTS: fact_orders = source_registry
+            fact_orders=900 registry=900
+ 6  PASS   RECORD COUNTS: loaded totals
+            orders=900 lines=1953 customers=188 products=24 rejected_rows(history)=64
+ 7  PASS   DUPLICATES: no duplicate order_id / customer email / sku
+            duplicate keys: 0
+ 8  PASS   DUPLICATES: same content never loaded twice
+            order+hash loaded more than once: 0
+ 9  PASS   DUPLICATES: dw hash = registry hash
+            mismatches: 0
+10  PASS   MISSING VALUES: required fact columns not null
+            null violations: 0
+11  PASS   MISSING VALUES: dimension keys / item values not null
+            null violations: 0
+12  PASS   MISSING VALUES: optional attributes (reported, imputed)
+            customers w/o name=1, w/o country=0, products w/o name=0, orders channel=unknown 27, status=unknown 0
+13  PASS   INTEGRITY: order_total = sum(lines), item_count = #lines
+            mismatches: 0
+14  PASS   LOADS: no run or batch stuck in running
+            stuck: 0
+15  PASS   LOADS: no unfinished checkpoint (nothing left to resume)
+            in_progress checkpoints: 0
+16  PASS   LOADS: failed runs on record (history, informational)
+            failed runs: 1
+
+Ground-truth comparison (expected_full.json)
+    PASS  valid unique orders: expected=900 actual=900
+    PASS  total revenue: expected=660194.14 actual=660194.14
+    PASS  distinct customers: expected=188 actual=188
+    PASS  distinct products: expected=24 actual=24
+    PASS  orders by status: expected={'cancelled': 64, 'delivered': 411, 'pending': 101, 'processing': 90, 'shipped': 234} actual={'delivered': 411, 'processing': 90, 'cancelled': 64, 'pending': 101, 'shipped': 234}
+
+OVERALL: ALL CHECKS PASSED
