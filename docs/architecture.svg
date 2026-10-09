@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 700" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect width="1240" height="700" fill="#ffffff"/>
+  <text x="620" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">XML → PostgreSQL batch ETL: architecture</text>
+  <text x="620" y="56" text-anchor="middle" font-size="13" fill="#475569">Raw XML → Raw/Staging → Cleaned → Transformed → PostgreSQL (dw) → Analysis</text>
+
+  <!-- PYTHON band -->
+  <rect x="20" y="80" width="400" height="230" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="34" y="102" font-size="13" font-weight="700" fill="#1d4ed8">PYTHON  (etl/pipeline.py · extract.py)</text>
+
+  <rect x="36" y="118" width="150" height="170" rx="8" fill="#fff" stroke="#64748b"/>
+  <text x="111" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">RAW XML FILE</text>
+  <text x="111" y="162" text-anchor="middle" font-size="11.5" fill="#334155">raw_orders_full.xml</text>
+  <text x="111" y="178" text-anchor="middle" font-size="11.5" fill="#334155">raw_orders_incremental.xml</text>
+  <text x="111" y="204" text-anchor="middle" font-size="11" fill="#64748b">messy dates, ids, emails,</text>
+  <text x="111" y="219" text-anchor="middle" font-size="11" fill="#64748b">prices, duplicates, missing</text>
+  <text x="111" y="234" text-anchor="middle" font-size="11" fill="#64748b">values, invalid records</text>
+  <text x="111" y="266" text-anchor="middle" font-size="11" fill="#64748b">&lt;order id modified&gt; …</text>
+
+  <rect x="226" y="118" width="180" height="170" rx="8" fill="#fff" stroke="#3b82f6"/>
+  <text x="316" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">EXTRACT + BATCH</text>
+  <text x="316" y="164" text-anchor="middle" font-size="11.5" fill="#334155">iterparse (streaming)</text>
+  <text x="316" y="180" text-anchor="middle" font-size="11.5" fill="#334155">defusedxml (no XXE)</text>
+  <text x="316" y="196" text-anchor="middle" font-size="11.5" fill="#334155">flatten → text fields</text>
+  <text x="316" y="212" text-anchor="middle" font-size="11.5" fill="#334155">skip ≤ checkpoint</text>
+  <text x="316" y="228" text-anchor="middle" font-size="11.5" fill="#334155">skip &lt; watermark (incr.)</text>
+  <text x="316" y="244" text-anchor="middle" font-size="11.5" fill="#334155">groups of N records</text>
+  <text x="316" y="268" text-anchor="middle" font-size="11" fill="#64748b">1 batch = 1 transaction</text>
+  <line x1="186" y1="203" x2="224" y2="203" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- POSTGRES band -->
+  <rect x="440" y="80" width="780" height="230" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="454" y="102" font-size="13" font-weight="700" fill="#15803d">POSTGRESQL  (sql/*.sql · set-based plpgsql, called once per batch inside the batch transaction)</text>
+
+  <g font-size="11.5" fill="#334155" text-anchor="middle">
+    <rect x="454" y="118" width="150" height="170" rx="8" fill="#fff" stroke="#16a34a"/>
+    <text x="529" y="140" font-size="14" font-weight="700" fill="#15803d">RAW + STAGING</text>
+    <text x="529" y="164">raw.source_files</text><text x="529" y="179" fill="#64748b" font-size="10.5">file as TEXT + sha256</text>
+    <text x="529" y="200">staging.orders_stg</text><text x="529" y="215">staging.order_items_stg</text>
+    <text x="529" y="236" fill="#64748b" font-size="10.5">everything TEXT,</text><text x="529" y="250" fill="#64748b" font-size="10.5">no judgement yet</text>
+    <text x="529" y="283" fill="#15803d" font-size="10" font-weight="700">process_batch(batch_id) ↓</text>
+
+    <rect x="636" y="118" width="170" height="170" rx="8" fill="#fff" stroke="#16a34a"/>
+    <text x="721" y="140" font-size="14" font-weight="700" fill="#15803d">CLEANED</text>
+    <text x="721" y="164">cleaned.orders / order_items</text>
+    <text x="721" y="184" fill="#64748b" font-size="10.5">ids, dates, emails, money,</text><text x="721" y="198" fill="#64748b" font-size="10.5">country/status/channel maps</text>
+    <text x="721" y="220">validate → reject reasons</text>
+    <text x="721" y="238">hash + dedupe vs registry</text>
+    <text x="721" y="256" fill="#64748b" font-size="10.5">dq_status: valid · rejected ·</text><text x="721" y="269" fill="#64748b" font-size="10.5">duplicate · stale</text>
+    <text x="721" y="283" fill="#15803d" font-size="10" font-weight="700">clean_batch() + dedupe_batch()</text>
+
+    <rect x="838" y="118" width="150" height="170" rx="8" fill="#fff" stroke="#16a34a"/>
+    <text x="913" y="140" font-size="14" font-weight="700" fill="#15803d">TRANSFORMED</text>
+    <text x="913" y="164">transformed.orders_t</text><text x="913" y="180">transformed.order_lines_t</text>
+    <text x="913" y="202" fill="#64748b" font-size="10.5">only new/changed rows</text>
+    <text x="913" y="222" fill="#64748b" font-size="10.5">year · quarter · month</text><text x="913" y="236" fill="#64748b" font-size="10.5">order_total · size band</text>
+    <text x="913" y="250" fill="#64748b" font-size="10.5">line_total</text>
+    <text x="913" y="283" fill="#15803d" font-size="10" font-weight="700">transform_batch()</text>
+
+    <rect x="1020" y="118" width="186" height="170" rx="8" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+    <text x="1113" y="140" font-size="14" font-weight="700" fill="#15803d">dw  (final tables)</text>
+    <text x="1113" y="164">dim_customer · dim_product</text><text x="1113" y="180">dim_date</text>
+    <text x="1113" y="200">fact_orders</text><text x="1113" y="216">fact_order_items</text>
+    <text x="1113" y="240" fill="#64748b" font-size="10.5">UPSERT (idempotent) ·</text><text x="1113" y="254" fill="#64748b" font-size="10.5">PK / FK / CHECK constraints</text>
+    <text x="1113" y="283" fill="#15803d" font-size="10" font-weight="700">load_batch()</text>
+  </g>
+  <g stroke="#334155" stroke-width="2" marker-end="url(#a)">
+    <line x1="604" y1="203" x2="634" y2="203"/><line x1="806" y1="203" x2="836" y2="203"/><line x1="988" y1="203" x2="1018" y2="203"/>
+  </g>
+  <!-- Python -> staging -->
+  <path d="M406,203 L424,203 L424,330 L529,330 L529,290" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <text x="432" y="326" font-size="11" fill="#334155">execute_values → staging, then SELECT etl.process_batch(batch_id)</text>
+
+  <!-- analysis -->
+  <rect x="1020" y="352" width="186" height="64" rx="8" fill="#fefce8" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="1113" y="376" text-anchor="middle" font-size="14" font-weight="700" fill="#a16207">ANALYSIS</text>
+  <text x="1113" y="394" text-anchor="middle" font-size="11.5" fill="#334155">analysis.v_monthly_revenue …</text>
+  <text x="1113" y="408" text-anchor="middle" font-size="11.5" fill="#334155">country · product · customer</text>
+  <line x1="1113" y1="288" x2="1113" y2="350" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- METADATA -->
+  <rect x="20" y="450" width="1200" height="230" rx="12" fill="#faf5ff" stroke="#9333ea" stroke-width="1.5"/>
+  <text x="34" y="472" font-size="13" font-weight="700" fill="#7e22ce">PIPELINE METADATA  (schema etl · written in the SAME transaction as the data it describes, except failure records)</text>
+  <g font-size="11.5" fill="#334155" text-anchor="middle">
+    <rect x="40" y="490" width="215" height="170" rx="8" fill="#fff" stroke="#9333ea"/>
+    <text x="147" y="512" font-size="13" font-weight="700" fill="#7e22ce">pipeline_runs</text>
+    <text x="147" y="534">run_id · start / end time</text><text x="147" y="550">status running|success|failed</text>
+    <text x="147" y="566">extracted · staged · inserted</text><text x="147" y="582">updated · rejected · duplicate</text>
+    <text x="147" y="598">stale · skipped (wm / ckpt)</text><text x="147" y="614">error_message · error_batch_no</text>
+    <text x="147" y="630">resumed_from_run_id</text>
+
+    <rect x="275" y="490" width="215" height="170" rx="8" fill="#fff" stroke="#9333ea"/>
+    <text x="382" y="512" font-size="13" font-weight="700" fill="#7e22ce">batch_log</text>
+    <text x="382" y="534">run_id · batch_no</text><text x="382" y="550">first / last position</text>
+    <text x="382" y="566">status · rows in/ins/upd</text><text x="382" y="582">rejected · duplicate · stale</text>
+    <text x="382" y="598">started / ended</text><text x="382" y="614">error_message</text>
+    <text x="382" y="636" fill="#64748b" font-size="10.5">failed batch row written</text><text x="382" y="650" fill="#64748b" font-size="10.5">AFTER its rollback</text>
+
+    <rect x="510" y="490" width="215" height="170" rx="8" fill="#fff" stroke="#9333ea"/>
+    <text x="617" y="512" font-size="13" font-weight="700" fill="#7e22ce">checkpoint</text>
+    <text x="617" y="534">per (pipeline, file sha256)</text><text x="617" y="550">last_batch_no · last_position</text>
+    <text x="617" y="566">in_progress | completed |</text><text x="617" y="582">abandoned</text>
+    <text x="617" y="606" fill="#64748b" font-size="10.5">updated INSIDE the batch</text><text x="617" y="620" fill="#64748b" font-size="10.5">transaction → resume point</text><text x="617" y="634" fill="#64748b" font-size="10.5">never ahead of the data</text>
+
+    <rect x="745" y="490" width="215" height="170" rx="8" fill="#fff" stroke="#9333ea"/>
+    <text x="852" y="512" font-size="13" font-weight="700" fill="#7e22ce">watermark</text>
+    <text x="852" y="534">per pipeline</text><text x="852" y="550">high_watermark (max source</text><text x="852" y="566">“modified” processed)</text>
+    <text x="852" y="590" fill="#64748b" font-size="10.5">advanced only when a run</text><text x="852" y="604" fill="#64748b" font-size="10.5">SUCCEEDS → drives</text><text x="852" y="618" fill="#64748b" font-size="10.5">incremental loads (≥, overlap)</text>
+
+    <rect x="980" y="490" width="220" height="170" rx="8" fill="#fff" stroke="#9333ea"/>
+    <text x="1090" y="512" font-size="13" font-weight="700" fill="#7e22ce">source_registry (dedup)</text>
+    <text x="1090" y="534">source_key = order_id</text><text x="1090" y="550">record_hash (sha256 of</text><text x="1090" y="566">cleaned business content)</text>
+    <text x="1090" y="582">source_modified · version_no</text>
+    <text x="1090" y="606" fill="#64748b" font-size="10.5">same hash → skip · newer →</text><text x="1090" y="620" fill="#64748b" font-size="10.5">update · older → stale</text>
+  </g>
+  <g stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#g)" fill="none">
+    <path d="M147,490 L147,330 L60,330 L60,312"/>
+    <path d="M617,490 L617,334"/>
+    <path d="M1090,490 L1090,430 L760,430 L760,290"/>
+  </g>
+  <text x="120" y="440" font-size="10.5" fill="#64748b">Python writes run / batch / checkpoint / watermark rows via etl.* functions</text>
+</svg>
