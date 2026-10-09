@@ -1,0 +1,29 @@
+
+==================================================================
+## EVIDENCE 10 - AUTOMATED TESTS (pytest)
+==================================================================
+Python 3.12.3
+psql (PostgreSQL) 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1)
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/etl_project
+collecting ... collected 15 items
+
+tests/test_extract.py::test_parses_fields_positions_and_items PASSED     [  6%]
+tests/test_extract.py::test_batched_groups_without_losing_records PASSED [ 13%]
+tests/test_extract.py::test_parse_ts PASSED                              [ 20%]
+tests/test_extract.py::test_malformed_xml_raises_after_yielding_complete_records PASSED [ 26%]
+tests/test_extract.py::test_entity_expansion_attack_is_refused PASSED    [ 33%]
+tests/test_extract.py::test_real_dataset_record_counts PASSED            [ 40%]
+tests/test_pipeline_integration.py::test_full_load_matches_ground_truth PASSED [ 46%]
+tests/test_pipeline_integration.py::test_rerunning_same_file_is_idempotent PASSED [ 53%]
+tests/test_pipeline_integration.py::test_incremental_loads_only_new_or_changed PASSED [ 60%]
+tests/test_pipeline_integration.py::test_crash_rolls_back_batch_then_resumes_from_checkpoint PASSED [ 66%]
+tests/test_pipeline_integration.py::test_truncated_file_then_complete_file_recovers_via_dedup_registry PASSED [ 73%]
+tests/test_pipeline_integration.py::test_result_does_not_depend_on_batch_size[7] PASSED [ 80%]
+tests/test_pipeline_integration.py::test_result_does_not_depend_on_batch_size[333] PASSED [ 86%]
+tests/test_pipeline_integration.py::test_result_does_not_depend_on_batch_size[5000] PASSED [ 93%]
+tests/test_pipeline_integration.py::test_validation_suite_passes_after_loads PASSED [100%]
+
+============================= 15 passed in 27.95s ==============================
