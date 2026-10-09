@@ -1,0 +1,9 @@
+alias,status
+pending,pending
+processing,processing
+shipped,shipped
+delivered,delivered
+complete,delivered
+completed,delivered
+cancelled,cancelled
+canceled,cancelled
