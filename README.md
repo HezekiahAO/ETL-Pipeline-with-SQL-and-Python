@@ -107,7 +107,7 @@ erDiagram
 
 **ELT split of work.** Python does what SQL is bad at (streaming a large XML file, batching, process control);
 PostgreSQL does what it is good at (set-based cleaning, de-duplication, joins, constraints). The SQL functions are
-the single implementation of the business rules – Python never re-implements them – and each is callable on its own, so
+the single implementation of the business rules is Python never re-implements them, and each is callable on its own, so
 the whole flow can also be run **with no Python at all** (`scripts/run_sql_demo.sh`, where PostgreSQL parses the XML itself
 with `xpath()`).
 
@@ -145,7 +145,7 @@ evidence/    01 … 11  (real output of every demonstration)
 ## 4. Quick start
 
 ```bash
-docker compose up -d                      # PostgreSQL 16  (or use any existing instance)
+docker compose up -d                      # PostgreSQL 18  (or use any existing instance)
 pip install -r requirements.txt
 cp .env.example .env && source .env       # DATABASE_URL / PG* variables
 
