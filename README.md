@@ -116,11 +116,13 @@ PostgreSQL does the set-based cleaning, de-duplication, joins, constraints. The 
 ## 3. Repository layout
 
 ```
-data/        raw_orders_full.xml · raw_orders_incremental.xml · raw_orders_truncated.xml · expected_*.json
-reference/   country_map.csv · status_map.csv · channel_map.csv           (lookup data, used by SQL and Python)
+data/ raw_orders_full.xml · raw_orders_incremental.xml · raw_orders_truncated.xml · expected_*.json
+
+reference/ country_map.csv · status_map.csv · channel_map.csv           (lookup data, used by SQL and Python)
+
 sql/
   00_reset.sql                 drop everything (demo only)
-  01_schema.sql                ALL tables, constraints, indexes, dim_date    (creation + constraints)
+  01_schema.sql                ALL tables, constraints, indexes, dim_date (creation + constraints)
   02_reference_data.sql        \copy lookup CSVs (psql only; Python loads the same CSVs itself)
   03_cleaning_functions.sql    one function per cleaning rule
   04_pipeline_functions.sql    clean_batch · dedupe_batch · transform_batch · load_batch · process_batch + metadata helpers
@@ -150,7 +152,7 @@ pip install -r requirements.txt
 cp .env.example .env && source .env       # DATABASE_URL / PG* variables
 
 python -m etl.pipeline init --reset                                                    # create schemas, functions, reference data
-python -m etl.pipeline run data/raw_orders_full.xml        --mode full        --batch-size 100
+python -m etl.pipeline run data/raw_orders_full.xml --mode full --batch-size 100
 python -m etl.pipeline run data/raw_orders_incremental.xml --mode incremental --batch-size 50
 python -m etl.pipeline validate --expected data/expected_incremental.json
 
