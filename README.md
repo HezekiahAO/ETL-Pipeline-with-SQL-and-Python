@@ -118,7 +118,7 @@ PostgreSQL does the set-based cleaning, de-duplication, joins, constraints. The 
 ```
 data/ raw_orders_full.xml · raw_orders_incremental.xml · raw_orders_truncated.xml · expected_*.json
 
-reference/ country_map.csv · status_map.csv · channel_map.csv           (lookup data, used by SQL and Python)
+reference/ country_map.csv · status_map.csv · channel_map.csv (lookup data, used by SQL and Python)
 
 sql/
   00_reset.sql                 drop everything (demo only)
@@ -168,11 +168,8 @@ CLI: `init [--reset]` · `run SOURCE [--mode full|incremental] [--batch-size N] 
 
 ## 5. How the XML is parsed
 
-**Python** ([`etl/extract.py`](etl/extract.py)) uses `iterparse`, a streaming parser: each `<order>` is turned into a
-flat record and its subtree is released immediately, so memory stays flat for files of any size. It parses with
-**`defusedxml`**, which refuses entity-expansion ("billion laughs") and external-entity (XXE) attacks (tested).
-The extractor copies values *as text, exactly as found*; only blank/missing elements become `None`. No cleaning
-happens in Python, which keeps the business rules in one place.
+**Python** ([`etl/extract.py`](etl/extract.py)) uses `iterparse`, a streaming parser: each `<order>` is turned into a flat record and its subtree is released immediately, so memory stays flat for files of any size. It parses with **`defusedxml`**, which refuses entity-expansion ("billion laughs") and external-entity (XXE) attacks (tested).
+The extractor copies values *as text, exactly as found*; only blank/missing elements become `None`. No cleaning happens in Python, which keeps the business rules in one place.
 
 Field extraction map:
 
@@ -185,22 +182,16 @@ Field extraction map:
 
 Each order also gets its 1-based **position** in the file – the basis for checkpointing.
 
-**SQL** can do the same extraction with no Python: `xpath('/orders/order', raw_content::xml)` explodes the document into
-nodes, then `xpath('string(/order/customer/email)', node)` pulls each field (see `sql/10_demo_sql_etl.sql`). Both
-routes feed the identical staging tables and the identical downstream SQL.
+**SQL** can do the same extraction with no Python: `xpath('/orders/order', raw_content::xml)` explodes the document into nodes, then `xpath('string(/order/customer/email)', node)` pulls each field (see `sql 10_demo_sql_etl.sql`). Both routes feed the identical staging tables and the identical downstream SQL.
 
-A malformed file raises `ParseError` *after* the complete records before the defect have been streamed; those are
-processed normally, the failure is recorded (§13).
+A malformed file raises `ParseError` *after* the complete records before the defect have been streamed; those are processed normally, the failure is recorded (See Section 13).
 
 ---
 
 ## 6. How SQL is used for ETL
 
 ### Structure and constraints (`sql/01_schema.sql`)
-Seven schemas; PK/FK on every relationship; `CHECK` constraints that encode the business rules in the database itself
-(status and channel enumerations, `qty > 0`, `unit_price >= 0`, `order_total >= 0`, `email = lower(email)`,
-`item_count > 0`); `UNIQUE` on natural keys (`email`, `sku`, file `sha256`); generated column
-`line_total = qty × unit_price`. Even buggy code cannot write an invalid row.
+Seven schemas; PK/FK on every relationship; `CHECK` constraints that encode the business rules in the database itself (status and channel enumerations, `qty > 0`, `unit_price >= 0`, `order_total >= 0`, `email = lower(email)`, `item_count > 0`); `UNIQUE` on natural keys (`email`, `sku`, file `sha256`); generated column `line_total = qty × unit_price`. If a row violates a rule, the database rejects it, So even if the ETL code has a bug that tries to load bad data, the bad data can’t get in.
 
 ### Cleaning rules (`sql/03_cleaning_functions.sql`)
 Each returns `NULL` if the value is missing or unrepairable; validation then decides what `NULL` means.
@@ -283,7 +274,7 @@ Incremental has **two independent filters**:
    The comparison is `≥`, deliberately overlapping by one boundary record, so equal-timestamp records are never lost.
 2. **Content hash** (exact, late): a record that passes the watermark but is byte-for-byte the same business content
    as what is already loaded (e.g. the source re-exported it with a new timestamp) is recognised as a duplicate and
-   **not re-loaded** (§10).
+   **not re-loaded** (See Section 10).
 
 Results (real numbers):
 
