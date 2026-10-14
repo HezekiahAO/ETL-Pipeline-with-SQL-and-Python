@@ -94,7 +94,6 @@ After the incremental file: **960 orders, revenue 728,924.11.**
 | **Metadata** | `etl.pipeline_runs`, `batch_log`, `checkpoint`, `watermark`, `source_registry` | Run history, resume point, incremental watermark, de-duplication registry. |
 
 Target model (`dw`):
-
 ```mermaid
 erDiagram
     dim_customer ||--o{ fact_orders : "customer_key"
@@ -108,11 +107,9 @@ erDiagram
     fact_order_items { text order_id PK_FK  int line_no PK  int product_key FK  int qty  numeric unit_price  numeric line_total }
 ```
 
-**ELT split of work.** Python does what SQL is bad at (streaming a large XML file, batching, process control);
-PostgreSQL does what it is good at (set-based cleaning, de-duplication, joins, constraints). The SQL functions are
-the single implementation of the business rules is Python never re-implements them, and each is callable on its own, so
-the whole flow can also be run **with no Python at all** (`scripts/run_sql_demo.sh`, where PostgreSQL parses the XML itself
-with `xpath()`).
+**ELT split of work.** Python does streaming of large XML file, batching, process control;
+
+PostgreSQL does the set-based cleaning, de-duplication, joins, constraints. The SQL functions are the single implementation of the business rules is Python never re-implements them, and each is callable on its own, so the whole flow can also be run **with no Python at all** (`scripts/run_sql_demo.sh`, where PostgreSQL parses the XML itself with `xpath()`).
 
 ---
 
